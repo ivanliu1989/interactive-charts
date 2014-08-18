@@ -9,7 +9,8 @@ shinyUI(fluidPage(
                      p("Shiny is available on CRAN, so you can install it in the usual way from your R console."),
                      code('install.packages("Shiny")'),
                      br(),br(),br(),br(),img(src="RStudio-Ball.png",height=72,width=72),
-                     "Shiny is a product of", span("RStudio", style="color:blue")),
+                     "Shiny is a product of", span("RStudio", style="color:blue"), br(),
+                     actionButton("action", label="Action")),
         mainPanel(
             h1("Introducing Shiny"),
             p("Shiny is a new package from RStudio that makes it incredibly easy to build interactive web application with R"),
