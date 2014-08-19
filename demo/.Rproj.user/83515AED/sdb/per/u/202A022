@@ -1,0 +1,17 @@
+{
+    "contents" : "## Example 1 Facetted Scatterplot\nnames(iris) = gsub(\"\\\\.\", \"\", names(iris))\nrPlot(SepalLength ~ SepalWidth | Species, data = iris, color = 'Species', type = 'point')\n\n## Example 2 Facetted Barplot\nhair_eye = as.data.frame(HairEyeColor)\nrPlot(Freq ~ Hair | Sex, color = 'Eye', data = hair_eye, type = 'bar')\n\nr1 <- rPlot(mpg ~ wt | am + vs, data = mtcars, type = \"point\", color = \"gear\")\nr1$print(\"chart1\")\nr1\n\ndata(economics, package = \"ggplot2\")\necon <- transform(economics, date = as.character(date))\nm1 <- mPlot(x = \"date\", y = c(\"psavert\", \"uempmed\"), type = \"Line\", data = econ)\nm1$set(pointSize = 0, lineWidth = 1)\nm1$print(\"chart2\")\nm1\n\nhair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == \"Male\")\nn1 <- nPlot(Freq ~ Hair, group = \"Eye\", data = hair_eye_male, type = \"multiBarChart\")\nn1$print(\"chart3\")\nn1\n\nrequire(reshape2)\nuspexp <- melt(USPersonalExpenditure)\nnames(uspexp)[1:2] = c(\"category\", \"year\")\nx1 <- xPlot(value ~ year, group = \"category\", data = uspexp, type = \"line-dotted\")\nx1$print(\"chart4\")\nx1\n\nh1 <- hPlot(x = \"Wr.Hnd\", y = \"NW.Hnd\", data = MASS::survey, type = c(\"line\", \n                                                                      \"bubble\", \"scatter\"), group = \"Clap\", size = \"Age\")\nh1$print(\"chart5\")\nh1\n\nmap3 <- Leaflet$new()\nmap3$setView(c(51.505, -0.09), zoom = 13)\nmap3$marker(c(51.5, -0.09), bindPopup = \"<p> Hi. I am a popup </p>\")\nmap3$marker(c(51.495, -0.083), bindPopup = \"<p> Hi. I am another popup </p>\")\nmap3$print(\"chart7\")\nmap3\n",
+    "created" : 1408453872246.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "423323247",
+    "id" : "202A022",
+    "lastKnownWriteTime" : 29555302053445735,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
