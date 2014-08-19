@@ -1,0 +1,16 @@
+{
+    "contents" : "# server.R\n\nlibrary(quantmod)\nsource(\"helpers.R\")\n\n\nshinyServer(function(input, output) {\n    \n    dataInput <- reactive({  \n        getSymbols(input$symb, src = \"yahoo\", \n                   from = input$dates[1],\n                   to = input$dates[2],\n                   auto.assign = FALSE)\n    })\n    \n    finalInput <- reactive({\n        if (!input$adjust) return(dataInput())\n        adjust(dataInput())\n    })\n    \n    output$plot <- renderPlot({\n        chartSeries(finalInput(), theme = chartTheme(\"white\"), \n                    type = \"line\", log.scale = input$log, TA = NULL)\n    })\n})",
+    "created" : 1408451937273.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3560450493",
+    "id" : "4D38ED31",
+    "lastKnownWriteTime" : 1408450361,
+    "path" : "C:/Users/Ivan/Desktop/Data mining directory/interactive-charts/stockVis/server.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
