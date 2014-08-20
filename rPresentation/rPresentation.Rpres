@@ -1,0 +1,30 @@
+rPresentation
+========================================================
+author: Ivan Liu
+date: 01/08/2014
+
+First Slide
+========================================================
+
+For more details on authoring R presentations click the
+**Help** button on the toolbar.
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+Slide With Code
+========================================================
+
+
+```{r}
+require(rCharts)
+nPlot(mpg ~ wt, data = mtcars, type = 'scatterChart')
+```
+
+Slide With Plot
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```
