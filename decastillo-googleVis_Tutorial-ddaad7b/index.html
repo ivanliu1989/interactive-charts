@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Introduction to googleVis</title>
+  <title>googleVis Tutorial</title>
   <meta charset="utf-8">
-  <meta name="description" content="Introduction to googleVis">
-  <meta name="author" content="Markus Gesmann">
+  <meta name="description" content="googleVis Tutorial">
+  <meta name="author" content="Markus Gesmann and Diego de Castillo">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -32,11 +32,11 @@
     <!-- Should I move this to a Local Layout File? -->
     <slide class="title-slide segue nobackground">
       <hgroup class="auto-fadein">
-        <h1>Introduction to googleVis</h1>
-        <h2>Lancaster University, 21 May 2013</h2>
-        <p>Markus Gesmann<br/>Maintainer of the googleVis and ChainLadder packages</p>
+        <h1>googleVis Tutorial</h1>
+        <h2>useR! Conference, Albacete, 9 July 2013</h2>
+        <p>Markus Gesmann and Diego de Castillo<br/>Authors of the googleVis package</p>
       </hgroup>
-      <a href="https://github.com/mages/Introduction_to_googleVis/zipball/gh-pages" class="example">
+      <a href="https://github.com/decastillo/googleVis_Tutorial/zipball/gh-pages" class="example">
         Download
       </a>
       
@@ -54,10 +54,10 @@
   </hgroup>
   <article>
     <ol>
-<li>I am an autodidact </li>
-<li>What I present here works for me</li>
+<li>We are autodidacts </li>
+<li>What we present here works for us</li>
 <li>Read and follow the official <a href="https://developers.google.com/chart/">Google Chart API documentation</a> and <a href="https://developers.google.com/readme/terms">Terms of Service</a></li>
-<li>Sometimes you have re-load this presentation for the charts and all slides to appear</li>
+<li>Sometimes you have to re-load this presentation for the charts and all slides to appear</li>
 </ol>
 
   </article>
@@ -78,8 +78,19 @@
 <li>Concepts of googleVis</li>
 <li>Case studies</li>
 </ul></li>
+<li>googleVis on shiny<br></li>
 </ul>
 
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="segue dark" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Introduction and motivation</h2>
+  </hgroup>
+  <article>
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -95,7 +106,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-4" style="background:;">
+      <slide class="" id="slide-5" style="background:;">
   <hgroup>
     <h2>Motivation for googleVis</h2>
   </hgroup>
@@ -112,25 +123,17 @@
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-5" style="background:;">
+      <slide class="segue dark" id="slide-6" style="background:;">
   <hgroup>
-    <h2>Overview of googleVis</h2>
+    <h2>Google Chart Tools</h2>
   </hgroup>
   <article>
-    <ul>
-<li><p><a href="http://code.google.com/p/google-motion-charts-with-r/">googleVis</a> is a package for <a href="http://www.r-poject.org/">R</a> and provides an interface between R and the <a href="https://developers.google.com/chart/">Google Chart Tools</a></p></li>
-<li><p>The functions of the package allow users to visualise data with the Google Chart Tools without uploading their data to Google</p></li>
-<li><p>The output of googleVis functions is html code that contains the data and references to JavaScript functions hosted by Google</p></li>
-<li><p>To view the output a browser with an internet connection is required, the actual chart is rendered in the browser; some charts require Flash</p></li>
-<li><p>See also: <strong>Using the Google Visualisation API with R</strong>, 
-<a href="http://journal.r-project.org/archive/2011-2/RJournal_2011-2_Gesmann+de%7ECastillo.pdf">The R Journal, 3(2):40-44, December 2011</a> and googleVis <a href="http://cran.r-project.org/web/packages/googleVis/vignettes/googleVis.pdf">package vignette</a></p></li>
-</ul>
-
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-6" style="background:;">
+      <slide class="" id="slide-7" style="background:;">
   <hgroup>
     <h2>Introduction to Google Chart Tools</h2>
   </hgroup>
@@ -148,7 +151,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-7" style="background:;">
+      <slide class="" id="slide-8" style="background:;">
   <hgroup>
     <h2>Structure of Google Charts</h2>
   </hgroup>
@@ -157,7 +160,7 @@
 
 <ol>
 <li>References to Google’s AJAX and Visualisation API</li>
-<li>Data to visualise as a DataTable</li>
+<li>Data to visualize as a DataTable</li>
 <li>Instance call to create the chart</li>
 <li>Method call to draw the chart including options</li>
 <li>HTML &lt;div&gt; element to add the chart to the page</li>
@@ -167,7 +170,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-8" style="background:;">
+      <slide class="" id="slide-9" style="background:;">
   <hgroup>
     <h2>How hard can it be?</h2>
   </hgroup>
@@ -182,25 +185,25 @@
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-9" style="background:;">
+      <slide class="" id="slide-10" style="background:;">
   <hgroup>
     <h2>Motion chart example</h2>
   </hgroup>
   <article>
-    <pre><code class="r">library(googleVis)
+    <pre><code class="r">suppressPackageStartupMessages(library(googleVis))
 plot(gvisMotionChart(Fruits, &quot;Fruit&quot;, &quot;Year&quot;, options = list(width = 600, height = 400)))
 </code></pre>
 
 <!-- MotionChart generated in R 3.0.1 by googleVis 0.4.3 package -->
 
-<!-- Sun May 19 13:31:36 2013 -->
+<!-- Mon Jul  8 09:15:34 2013 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID303044eee160 () {
+function gvisDataMotionChartID418758f259d () {
   var data = new google.visualization.DataTable();
   var datajson =
 [
@@ -298,14 +301,14 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID303044eee160() {
-  var data = gvisDataMotionChartID303044eee160();
+function drawChartMotionChartID418758f259d() {
+  var data = gvisDataMotionChartID418758f259d();
   var options = {};
 options["width"] =    600;
 options["height"] =    400;
 
      var chart = new google.visualization.MotionChart(
-       document.getElementById('MotionChartID303044eee160')
+       document.getElementById('MotionChartID418758f259d')
      );
      chart.draw(data,options);
     
@@ -329,9 +332,9 @@ options["height"] =    400;
     pkgs.push(chartid);
 
   // Add the drawChart function to the global list of callbacks
-  callbacks.push(drawChartMotionChartID303044eee160);
+  callbacks.push(drawChartMotionChartID418758f259d);
 })();
-function displayChartMotionChartID303044eee160() {
+function displayChartMotionChartID418758f259d() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -357,12 +360,12 @@ function displayChartMotionChartID303044eee160() {
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID303044eee160"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID418758f259d"></script>
  
 
 <!-- divChart -->
 
-<div id="MotionChartID303044eee160"
+<div id="MotionChartID418758f259d"
   style="width: 600px; height: 400px;">
 </div>
 
@@ -370,9 +373,37 @@ function displayChartMotionChartID303044eee160() {
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-10" style="background:;">
+      <slide class="segue dark" id="slide-11" style="background:;">
   <hgroup>
-    <h2>googleVis version 0.4.2 provides interfaces to</h2>
+    <h2>R package googleVis</h2>
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Overview of googleVis</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li><p><a href="http://code.google.com/p/google-motion-charts-with-r/">googleVis</a> is a package for <a href="http://www.r-poject.org/">R</a> and provides an interface between R and the <a href="https://developers.google.com/chart/">Google Chart Tools</a></p></li>
+<li><p>The functions of the package allow users to visualize data with the Google Chart Tools without uploading their data to Google</p></li>
+<li><p>The output of googleVis functions is html code that contains the data and references to JavaScript functions hosted by Google</p></li>
+<li><p>To view the output a browser with an internet connection is required, the actual chart is rendered in the browser; some charts require Flash</p></li>
+<li><p>See also: <strong>Using the Google Visualisation API with R</strong>, 
+<a href="http://journal.r-project.org/archive/2011-2/RJournal_2011-2_Gesmann+de%7ECastillo.pdf">The R Journal, 3(2):40-44, December 2011</a> and googleVis <a href="http://cran.r-project.org/web/packages/googleVis/vignettes/googleVis.pdf">package vignette</a></p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>googleVis version 0.4.3 provides interfaces to</h2>
   </hgroup>
   <article>
     <ul>
@@ -399,7 +430,7 @@ function displayChartMotionChartID303044eee160() {
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-11" style="background:;">
+      <slide class="" id="slide-14" style="background:;">
   <hgroup>
     <h2>Key ideas of googleVis</h2>
   </hgroup>
@@ -428,7 +459,7 @@ cat(toJSON(dat))
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-12" style="background:;">
+      <slide class="" id="slide-15" style="background:;">
   <hgroup>
     <h2>The googleVis concept</h2>
   </hgroup>
@@ -458,7 +489,7 @@ cat(toJSON(dat))
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-13" style="background:;">
+      <slide class="" id="slide-16" style="background:;">
   <hgroup>
     <h2>gvis-Chart structure</h2>
   </hgroup>
@@ -471,7 +502,7 @@ cat(toJSON(dat))
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-14" style="background:;">
+      <slide class="" id="slide-17" style="background:;">
   <hgroup>
     <h2>Line chart with options set</h2>
   </hgroup>
@@ -496,7 +527,7 @@ Line &lt;- gvisLineChart(df, xvar=&quot;label&quot;, yvar=c(&quot;val1&quot;,&qu
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-15" style="background:;">
+      <slide class="" id="slide-18" style="background:;">
   <hgroup>
     <h2>Line chart with options</h2>
   </hgroup>
@@ -506,14 +537,14 @@ Line &lt;- gvisLineChart(df, xvar=&quot;label&quot;, yvar=c(&quot;val1&quot;,&qu
 
 <!-- LineChart generated in R 3.0.1 by googleVis 0.4.3 package -->
 
-<!-- Sun May 19 13:31:36 2013 -->
+<!-- Mon Jul  8 09:15:34 2013 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataLineChartID30301f0e88fb () {
+function gvisDataLineChartID4188eea2b7 () {
   var data = new google.visualization.DataTable();
   var datajson =
 [
@@ -541,8 +572,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartLineChartID30301f0e88fb() {
-  var data = gvisDataLineChartID30301f0e88fb();
+function drawChartLineChartID4188eea2b7() {
+  var data = gvisDataLineChartID4188eea2b7();
   var options = {};
 options["allowHtml"] = true;
 options["title"] = "Hello World";
@@ -559,7 +590,7 @@ options["width"] =    500;
 options["height"] =    300;
 
      var chart = new google.visualization.LineChart(
-       document.getElementById('LineChartID30301f0e88fb')
+       document.getElementById('LineChartID4188eea2b7')
      );
      chart.draw(data,options);
     
@@ -583,9 +614,9 @@ options["height"] =    300;
     pkgs.push(chartid);
 
   // Add the drawChart function to the global list of callbacks
-  callbacks.push(drawChartLineChartID30301f0e88fb);
+  callbacks.push(drawChartLineChartID4188eea2b7);
 })();
-function displayChartLineChartID30301f0e88fb() {
+function displayChartLineChartID4188eea2b7() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -611,12 +642,12 @@ function displayChartLineChartID30301f0e88fb() {
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID30301f0e88fb"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID4188eea2b7"></script>
  
 
 <!-- divChart -->
 
-<div id="LineChartID30301f0e88fb"
+<div id="LineChartID4188eea2b7"
   style="width: 500px; height: 300px;">
 </div>
 
@@ -624,7 +655,7 @@ function displayChartLineChartID30301f0e88fb() {
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-16" style="background:;">
+      <slide class="" id="slide-19" style="background:;">
   <hgroup>
     <h2>On-line changes</h2>
   </hgroup>
@@ -636,14 +667,14 @@ function displayChartLineChartID30301f0e88fb() {
 
 <!-- LineChart generated in R 3.0.1 by googleVis 0.4.3 package -->
 
-<!-- Sun May 19 13:31:36 2013 -->
+<!-- Mon Jul  8 09:15:34 2013 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataLineChartID3030734326aa () {
+function gvisDataLineChartID4186afca0f5 () {
   var data = new google.visualization.DataTable();
   var datajson =
 [
@@ -671,31 +702,31 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartLineChartID3030734326aa() {
-  var data = gvisDataLineChartID3030734326aa();
+function drawChartLineChartID4186afca0f5() {
+  var data = gvisDataLineChartID4186afca0f5();
   var options = {};
 options["allowHtml"] = true;
 options["height"] =    350;
 
-    chartLineChartID3030734326aa = new google.visualization.ChartWrapper({
+    chartLineChartID4186afca0f5 = new google.visualization.ChartWrapper({
          dataTable: data,       
          chartType: 'LineChart',
-         containerId: 'LineChartID3030734326aa',
+         containerId: 'LineChartID4186afca0f5',
          options: options
     });
-    chartLineChartID3030734326aa.draw();
+    chartLineChartID4186afca0f5.draw();
     
 
 }
 
-  function openEditorLineChartID3030734326aa() {
+  function openEditorLineChartID4186afca0f5() {
       var editor = new google.visualization.ChartEditor();
       google.visualization.events.addListener(editor, 'ok',
         function() { 
-          chartLineChartID3030734326aa = editor.getChartWrapper();  
-          chartLineChartID3030734326aa.draw(document.getElementById('LineChartID3030734326aa')); 
+          chartLineChartID4186afca0f5 = editor.getChartWrapper();  
+          chartLineChartID4186afca0f5.draw(document.getElementById('LineChartID4186afca0f5')); 
       }); 
-      editor.openDialog(chartLineChartID3030734326aa);
+      editor.openDialog(chartLineChartID4186afca0f5);
   }
     
  
@@ -715,9 +746,9 @@ options["height"] =    350;
     pkgs.push(chartid);
 
   // Add the drawChart function to the global list of callbacks
-  callbacks.push(drawChartLineChartID3030734326aa);
+  callbacks.push(drawChartLineChartID4186afca0f5);
 })();
-function displayChartLineChartID3030734326aa() {
+function displayChartLineChartID4186afca0f5() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -743,14 +774,14 @@ function displayChartLineChartID3030734326aa() {
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID3030734326aa"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID4186afca0f5"></script>
  
 
 <!-- divChart -->
 
-<p><input type='button' onclick='openEditorLineChartID3030734326aa()' value='Edit me!'/>  </p>
+<p><input type='button' onclick='openEditorLineChartID4186afca0f5()' value='Edit me!'/>  </p>
 
-<div id="LineChartID3030734326aa"
+<div id="LineChartID4186afca0f5"
   style="width: 600px; height: 350px;">
 </div>
 
@@ -758,7 +789,7 @@ function displayChartLineChartID3030734326aa() {
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-17" style="background:;">
+      <slide class="" id="slide-20" style="background:;">
   <hgroup>
     <h2>Change motion chart settings</h2>
   </hgroup>
@@ -768,14 +799,14 @@ function displayChartLineChartID3030734326aa() {
 
 <!-- MotionChart generated in R 3.0.1 by googleVis 0.4.3 package -->
 
-<!-- Sun May 19 13:31:36 2013 -->
+<!-- Mon Jul  8 09:15:34 2013 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID30303d9f9e04 () {
+function gvisDataMotionChartID4186fab6bb2 () {
   var data = new google.visualization.DataTable();
   var datajson =
 [
@@ -873,14 +904,14 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID30303d9f9e04() {
-  var data = gvisDataMotionChartID30303d9f9e04();
+function drawChartMotionChartID4186fab6bb2() {
+  var data = gvisDataMotionChartID4186fab6bb2();
   var options = {};
 options["width"] =    500;
 options["height"] =    350;
 
      var chart = new google.visualization.MotionChart(
-       document.getElementById('MotionChartID30303d9f9e04')
+       document.getElementById('MotionChartID4186fab6bb2')
      );
      chart.draw(data,options);
     
@@ -904,9 +935,9 @@ options["height"] =    350;
     pkgs.push(chartid);
 
   // Add the drawChart function to the global list of callbacks
-  callbacks.push(drawChartMotionChartID30303d9f9e04);
+  callbacks.push(drawChartMotionChartID4186fab6bb2);
 })();
-function displayChartMotionChartID30303d9f9e04() {
+function displayChartMotionChartID4186fab6bb2() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -932,12 +963,12 @@ function displayChartMotionChartID30303d9f9e04() {
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID30303d9f9e04"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID4186fab6bb2"></script>
  
 
 <!-- divChart -->
 
-<div id="MotionChartID30303d9f9e04"
+<div id="MotionChartID4186fab6bb2"
   style="width: 500px; height: 350px;">
 </div>
 
@@ -948,7 +979,7 @@ Ensure you have newlines at the beginning and end of the string. </p>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-18" style="background:;">
+      <slide class="" id="slide-21" style="background:;">
   <hgroup>
     <h2>Motion chart with initial settings changed</h2>
   </hgroup>
@@ -962,14 +993,14 @@ plot(gvisMotionChart(Fruits, &quot;Fruit&quot;, &quot;Year&quot;,
 
 <!-- MotionChart generated in R 3.0.1 by googleVis 0.4.3 package -->
 
-<!-- Sun May 19 13:31:36 2013 -->
+<!-- Mon Jul  8 09:15:34 2013 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID30303a3f3837 () {
+function gvisDataMotionChartID4185f2bac64 () {
   var data = new google.visualization.DataTable();
   var datajson =
 [
@@ -1067,15 +1098,15 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID30303a3f3837() {
-  var data = gvisDataMotionChartID30303a3f3837();
+function drawChartMotionChartID4185f2bac64() {
+  var data = gvisDataMotionChartID4185f2bac64();
   var options = {};
 options["width"] =    600;
 options["height"] =    320;
 options["state"] = "\n{\"iconType\":\"LINE\", \"dimensions\":{\n    \"iconDimensions\":[\"dim0\"]},\"xAxisOption\":\"_TIME\",\n    \"orderedByX\":false,\"orderedByY\":false,\"yZoomedDataMax\":100}\n";
 
      var chart = new google.visualization.MotionChart(
-       document.getElementById('MotionChartID30303a3f3837')
+       document.getElementById('MotionChartID4185f2bac64')
      );
      chart.draw(data,options);
     
@@ -1099,9 +1130,9 @@ options["state"] = "\n{\"iconType\":\"LINE\", \"dimensions\":{\n    \"iconDimens
     pkgs.push(chartid);
 
   // Add the drawChart function to the global list of callbacks
-  callbacks.push(drawChartMotionChartID30303a3f3837);
+  callbacks.push(drawChartMotionChartID4185f2bac64);
 })();
-function displayChartMotionChartID30303a3f3837() {
+function displayChartMotionChartID4185f2bac64() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -1127,12 +1158,12 @@ function displayChartMotionChartID30303a3f3837() {
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID30303a3f3837"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID4185f2bac64"></script>
  
 
 <!-- divChart -->
 
-<div id="MotionChartID30303a3f3837"
+<div id="MotionChartID4185f2bac64"
   style="width: 600px; height: 320px;">
 </div>
 
@@ -1140,7 +1171,7 @@ function displayChartMotionChartID30303a3f3837() {
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-19" style="background:;">
+      <slide class="" id="slide-22" style="background:;">
   <hgroup>
     <h2>Displaying geographical information</h2>
   </hgroup>
@@ -1157,7 +1188,8 @@ levels(x$Ranking) &lt;- nlevels(x$Rating):1
 x$Ranking &lt;- as.character(x$Ranking)
 x$Rating &lt;- paste(x$Country, x$Rating, sep=&quot;: &quot;)
 G &lt;- gvisGeoChart(x, &quot;Country&quot;, &quot;Ranking&quot;, hovervar=&quot;Rating&quot;,
-                options=list(gvis.editor=&quot;S&amp;P&quot;, 
+                options=list(gvis.editor=&quot;S&amp;P&quot;,
+                             projection=&quot;kavrayskiy-vii&quot;,
                              colorAxis=&quot;{colors:[&#39;#91BFDB&#39;, &#39;#FC8D59&#39;]}&quot;))
 </code></pre>
 
@@ -1165,7 +1197,7 @@ G &lt;- gvisGeoChart(x, &quot;Country&quot;, &quot;Ranking&quot;, hovervar=&quot
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-20" style="background:;">
+      <slide class="" id="slide-23" style="background:;">
   <hgroup>
     <h2>Chart countries&#39; S&amp;P credit rating</h2>
   </hgroup>
@@ -1175,14 +1207,14 @@ G &lt;- gvisGeoChart(x, &quot;Country&quot;, &quot;Ranking&quot;, hovervar=&quot
 
 <!-- GeoChart generated in R 3.0.1 by googleVis 0.4.3 package -->
 
-<!-- Sun May 19 13:31:38 2013 -->
+<!-- Mon Jul  8 09:15:44 2013 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataGeoChartID3030c83c0c1 () {
+function gvisDataGeoChartID4182c430a0c () {
   var data = new google.visualization.DataTable();
   var datajson =
 [
@@ -1363,7 +1395,7 @@ function gvisDataGeoChartID3030c83c0c1 () {
 ],
 [
  "Cyprus",
-"Cyprus: CCC",
+"Cyprus: SD",
 18 
 ],
 [
@@ -1444,7 +1476,7 @@ function gvisDataGeoChartID3030c83c0c1 () {
 [
  "Grenada",
 "Grenada: SD",
-19 
+18 
 ],
 [
  "Guatemala",
@@ -1538,8 +1570,8 @@ function gvisDataGeoChartID3030c83c0c1 () {
 ],
 [
  "Latvia",
-"Latvia: BBB",
-9 
+"Latvia: BBB+",
+8 
 ],
 [
  "Lebanon",
@@ -1813,8 +1845,8 @@ function gvisDataGeoChartID3030c83c0c1 () {
 ],
 [
  "Venezuela",
-"Venezuela: B+",
-14 
+"Venezuela: B",
+15 
 ],
 [
  "Vietnam",
@@ -1835,32 +1867,33 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartGeoChartID3030c83c0c1() {
-  var data = gvisDataGeoChartID3030c83c0c1();
+function drawChartGeoChartID4182c430a0c() {
+  var data = gvisDataGeoChartID4182c430a0c();
   var options = {};
 options["width"] =    556;
 options["height"] =    347;
+options["projection"] = "kavrayskiy-vii";
 options["colorAxis"] = {colors:['#91BFDB', '#FC8D59']};
 
-    chartGeoChartID3030c83c0c1 = new google.visualization.ChartWrapper({
+    chartGeoChartID4182c430a0c = new google.visualization.ChartWrapper({
          dataTable: data,       
          chartType: 'GeoChart',
-         containerId: 'GeoChartID3030c83c0c1',
+         containerId: 'GeoChartID4182c430a0c',
          options: options
     });
-    chartGeoChartID3030c83c0c1.draw();
+    chartGeoChartID4182c430a0c.draw();
     
 
 }
 
-  function openEditorGeoChartID3030c83c0c1() {
+  function openEditorGeoChartID4182c430a0c() {
       var editor = new google.visualization.ChartEditor();
       google.visualization.events.addListener(editor, 'ok',
         function() { 
-          chartGeoChartID3030c83c0c1 = editor.getChartWrapper();  
-          chartGeoChartID3030c83c0c1.draw(document.getElementById('GeoChartID3030c83c0c1')); 
+          chartGeoChartID4182c430a0c = editor.getChartWrapper();  
+          chartGeoChartID4182c430a0c.draw(document.getElementById('GeoChartID4182c430a0c')); 
       }); 
-      editor.openDialog(chartGeoChartID3030c83c0c1);
+      editor.openDialog(chartGeoChartID4182c430a0c);
   }
     
  
@@ -1880,9 +1913,9 @@ options["colorAxis"] = {colors:['#91BFDB', '#FC8D59']};
     pkgs.push(chartid);
 
   // Add the drawChart function to the global list of callbacks
-  callbacks.push(drawChartGeoChartID3030c83c0c1);
+  callbacks.push(drawChartGeoChartID4182c430a0c);
 })();
-function displayChartGeoChartID3030c83c0c1() {
+function displayChartGeoChartID4182c430a0c() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -1908,14 +1941,14 @@ function displayChartGeoChartID3030c83c0c1() {
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID3030c83c0c1"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID4182c430a0c"></script>
  
 
 <!-- divChart -->
 
-<p><input type='button' onclick='openEditorGeoChartID3030c83c0c1()' value='S&P'/>  </p>
+<p><input type='button' onclick='openEditorGeoChartID4182c430a0c()' value='S&P'/>  </p>
 
-<div id="GeoChartID3030c83c0c1"
+<div id="GeoChartID4182c430a0c"
   style="width: 556px; height: 347px;">
 </div>
 
@@ -1923,7 +1956,7 @@ function displayChartGeoChartID3030c83c0c1() {
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-21" style="background:;">
+      <slide class="" id="slide-24" style="background:;">
   <hgroup>
     <h2>Geo chart with markers</h2>
   </hgroup>
@@ -1944,7 +1977,7 @@ G &lt;- gvisGeoChart(eq, &quot;loc&quot;, &quot;Depth&quot;, &quot;Magnitude&quo
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-22" style="background:;">
+      <slide class="" id="slide-25" style="background:;">
   <hgroup>
     <h2>Geo chart of earth quakes</h2>
   </hgroup>
@@ -1954,7 +1987,7 @@ G &lt;- gvisGeoChart(eq, &quot;loc&quot;, &quot;Depth&quot;, &quot;Magnitude&quo
 
 <!-- GeoChart generated in R 3.0.1 by googleVis 0.4.3 package -->
 
-<!-- Sun May 19 13:31:38 2013 -->
+<!-- Mon Jul  8 09:15:50 2013 -->
 
 <!-- jsHeader -->
 
@@ -1966,1456 +1999,1144 @@ function gvisDataEQ () {
   var datajson =
 [
  [
- 12.647,
--89.103,
-35,
-4.3 
-],
-[
- -30.568,
--177.751,
-7.5,
-4.8 
-],
-[
- 52.313,
-159.942,
-61.6,
-4.3 
-],
-[
- 37.484,
-144.564,
-35.2,
-4.5 
-],
-[
- 36.927,
--104.72,
+ 35.502,
+-96.521,
 5,
-2.5 
-],
-[
- 36.743,
-5.279,
-12.7,
-4.9 
-],
-[
- -37.628,
-177.943,
-185.7,
-4.5 
-],
-[
- -45.276,
-167.308,
-10.1,
-4.2 
-],
-[
- 62.895,
--150.143,
-127.9,
 2.9 
 ],
 [
- 5.112,
-94.29,
-60.3,
+ -55.937,
+-27.244,
+54.9,
 4.7 
 ],
 [
- 18.978,
--68.486,
-103,
-3.6 
+ 35.57,
+-118.532,
+1.8,
+2.6 
 ],
 [
- 62.589,
--25.465,
+ 13.362,
+-89.079,
+96.6,
+5.9 
+],
+[
+ -8.753,
+113.057,
+77.3,
+5.8 
+],
+[
+ -5.429,
+125.852,
+535.9,
+4.9 
+],
+[
+ 64.659,
+-152.416,
+18.9,
+2.6 
+],
+[
+ 51.341,
+179.772,
+22.4,
+2.8 
+],
+[
+ 51.139,
+179.899,
+26.5,
+2.8 
+],
+[
+ -39.811,
+176.577,
+43.8,
+4.8 
+],
+[
+ 51.074,
+179.964,
+28.1,
+2.6 
+],
+[
+ 51.313,
+179.773,
+49.2,
+2.8 
+],
+[
+ 51.131,
+179.894,
+10.4,
+2.7 
+],
+[
+ -6.016,
+149.722,
+62,
+6.6 
+],
+[
+ 51.155,
+-179.913,
+43.9,
+5.4 
+],
+[
+ 53.459,
+-165.193,
+25.5,
+3.1 
+],
+[
+ -3.939,
+153.882,
+378.8,
+7.2 
+],
+[
+ -23.031,
+-66.866,
+234.2,
+4.6 
+],
+[
+ -25.821,
+30.555,
+5,
+4.7 
+],
+[
+ -27.841,
+-66.802,
+159.6,
+4.5 
+],
+[
+ 43.278,
+87.115,
+29.5,
+4.4 
+],
+[
+ 27.552,
+66.679,
+36.4,
+4 
+],
+[
+ 44.491,
+148.136,
+51.1,
+4.3 
+],
+[
+ 36.456,
+-112.576,
+5.2,
+3.5 
+],
+[
+ 33.51,
+-116.483,
+10.2,
+2.7 
+],
+[
+ 51.714,
+-171.626,
+33.2,
+2.7 
+],
+[
+ 40.204,
+-121.031,
+0.1,
+3.4 
+],
+[
+ -24.501,
+-67.654,
+184.9,
+4.2 
+],
+[
+ -6.084,
+103.848,
+47.2,
+4.9 
+],
+[
+ 18.461,
+-65.434,
+119,
+2.8 
+],
+[
+ 18.63,
+-64.3,
+122,
+3.3 
+],
+[
+ 31.272,
+141.813,
+29.5,
+4.7 
+],
+[
+ 19.737,
+-65.345,
+12,
+3.2 
+],
+[
+ 51.758,
+177.416,
+14.8,
+2.6 
+],
+[
+ 59.573,
+-150.391,
+28,
+3.2 
+],
+[
+ 61.83,
+-149.564,
+31.4,
+3.3 
+],
+[
+ -29.727,
+-111.754,
+10,
+5 
+],
+[
+ -18.91,
+-69.308,
+101.8,
+4.9 
+],
+[
+ 18.172,
+-67.522,
+10,
+3 
+],
+[
+ 67.593,
+142.141,
 10,
 4.4 
 ],
 [
- 36.376,
-143.301,
-11,
-4.9 
+ 18.933,
+-66.489,
+55,
+2.8 
 ],
 [
- 40.322,
--124.39,
-20.7,
-2.9 
+ -7.039,
+125.265,
+502.2,
+4.2 
 ],
 [
- 19.082,
--65.241,
-8,
-2.9 
+ 51.796,
+-170.382,
+46.9,
+3 
 ],
 [
- 19.597,
--66.36,
-60,
-3.1 
+ 36.552,
+71.405,
+105.3,
+4.2 
 ],
 [
- -17.099,
--70.706,
-85.8,
+ 40.291,
+-124.45,
+20.4,
+2.7 
+],
+[
+ -23.494,
+-66.448,
+201.1,
+5.2 
+],
+[
+ 46.2,
+150.53,
+142.2,
 4.8 
 ],
 [
- -21.54,
--68.332,
-141.9,
-4 
-],
-[
- 37.81,
-142.437,
-38.6,
-4.3 
-],
-[
- 62.006,
--150.956,
-67.2,
+ 53.481,
+-165.364,
+14.5,
 2.6 
 ],
 [
- 56.219,
-163.253,
-11.7,
-5 
+ 40.932,
+-124.477,
+8.5,
+3.4 
 ],
 [
- 18.943,
--64.671,
-8,
-2.7 
+ 53.569,
+-165.423,
+35,
+2.8 
 ],
 [
- 53.301,
--166.903,
-78.5,
-2.7 
-],
-[
- 17.423,
--62.008,
-20.3,
-4.8 
-],
-[
- 52.883,
-158.876,
-85.3,
-4.7 
-],
-[
- 52.672,
-158.942,
-73.8,
-4.9 
-],
-[
- 53.562,
--165.419,
-31.4,
-2.5 
-],
-[
- 63.618,
--147.806,
-4.8,
-2.9 
-],
-[
- 19.447,
--66.267,
-59,
-3.3 
-],
-[
- 56.084,
-164.637,
-30.9,
-4.7 
-],
-[
- 60.288,
--152.958,
+ 60.813,
+-152.276,
 117.8,
 3.3 
 ],
 [
- -28.374,
-178.649,
-609.4,
-5 
-],
-[
- 40.441,
--124.477,
-22.9,
-3.8 
-],
-[
- -8.966,
-124.14,
-94.5,
-4.7 
-],
-[
- 52.49,
--171.701,
-24,
-2.9 
-],
-[
- 40.316,
--124.354,
-19.4,
-4.3 
-],
-[
- 19.522,
--66.324,
-13,
-3.3 
-],
-[
- 19.48,
--66.309,
-52,
-3.4 
-],
-[
- 33.22,
--115.539,
-null,
-2.5 
-],
-[
- 26.57,
-57.779,
-10,
-4.4 
-],
-[
- -21.182,
-168.517,
-24.4,
-4.9 
-],
-[
- 26.768,
-57.778,
-9.7,
-5.5 
-],
-[
- 26.688,
-57.811,
-9.9,
-5.6 
-],
-[
- 33.556,
--118.371,
-null,
-3.3 
-],
-[
- 19.483,
--66.34,
-13,
-3.1 
-],
-[
- 37.813,
-142.383,
-29,
-4.5 
-],
-[
- 6.546,
--82.387,
-7.9,
-4.6 
-],
-[
- 52.198,
-160.302,
-40,
-4.4 
-],
-[
- 19.765,
--156.095,
-9.6,
-2.7 
-],
-[
- 37.745,
-141.494,
-34.3,
+ -3.249,
+100.567,
+19.7,
 6 
 ],
 [
- 19.288,
--66.354,
-72,
-3.1 
-],
-[
- -17.892,
--178.628,
-630.7,
+ -5.332,
+151.971,
+53.2,
 4.6 
 ],
 [
- 59.1,
--152.832,
-70.3,
+ 35.59,
+-97.244,
+4.6,
+2.7 
+],
+[
+ 19.315,
+-64.763,
+17,
+3.1 
+],
+[
+ 63.182,
+-151.387,
+null,
+2.5 
+],
+[
+ 18.248,
+-64.462,
+140,
+3.2 
+],
+[
+ 36.562,
+-121.133,
+3.8,
+2.6 
+],
+[
+ 18.034,
+-65.38,
+17,
+2.7 
+],
+[
+ 34.975,
+-120.74,
+4.4,
+2.5 
+],
+[
+ -14.744,
+-71.647,
+10.1,
+4.5 
+],
+[
+ 38.111,
+69.113,
+45.7,
+4.1 
+],
+[
+ -2.988,
+147.28,
+40.1,
+4.6 
+],
+[
+ 35.772,
+140.925,
+40,
+4.6 
+],
+[
+ 19.379,
+-67.795,
+58,
+2.7 
+],
+[
+ 19.026,
+-155.388,
+19.7,
+2.9 
+],
+[
+ 51.593,
+-175.287,
+25.2,
+3.2 
+],
+[
+ 2.541,
+98.728,
+15.9,
+4.7 
+],
+[
+ 15.139,
+52.047,
+10,
+4.5 
+],
+[
+ 14.88,
+52.25,
+10,
+4.8 
+],
+[
+ 61.374,
+-146.865,
+10.5,
+2.5 
+],
+[
+ 63.16,
+-149.318,
+94,
+2.7 
+],
+[
+ -15.719,
+167.573,
+153.9,
+4.5 
+],
+[
+ 6.757,
+-73.025,
+159.9,
+4.5 
+],
+[
+ 62.263,
+-145.771,
+15.5,
+3.5 
+],
+[
+ -7.981,
+107.871,
+69.5,
+4.8 
+],
+[
+ 61.124,
+-147.363,
+0.5,
+2.5 
+],
+[
+ 34.906,
+-119.205,
+13.1,
+3 
+],
+[
+ 20.052,
+-155.511,
+36.2,
+2.7 
+],
+[
+ 18.499,
+-66.593,
+94,
+3.2 
+],
+[
+ -8.903,
+67.213,
+13.5,
+4.7 
+],
+[
+ 19.247,
+-64.782,
+39,
+3 
+],
+[
+ 19.155,
+-64.469,
+50,
 3.3 
 ],
 [
- 19.388,
--66.334,
-85,
+ 19.206,
+-64.727,
+33,
 3.4 
 ],
 [
- 19.538,
--66.295,
-13,
+ 24.237,
+-109.046,
+10,
+4.2 
+],
+[
+ 52.629,
+171.559,
+29.9,
+4.7 
+],
+[
+ 19.254,
+-64.638,
+51,
+3.2 
+],
+[
+ 8.833,
+-70.85,
+13.4,
+4.6 
+],
+[
+ -22.498,
+-68.396,
+112.3,
+4.9 
+],
+[
+ 38.797,
+-122.814,
+3.1,
+2.5 
+],
+[
+ 38.795,
+-122.813,
+null,
+2.6 
+],
+[
+ 54.244,
+-162.54,
+25.5,
+2.9 
+],
+[
+ 40.087,
+-119.678,
+15.7,
 2.8 
 ],
 [
- -40.486,
--91.379,
-10,
+ 51.588,
+-171.346,
+25.5,
+2.5 
+],
+[
+ -7.039,
+155.644,
+72,
+6.1 
+],
+[
+ 55.425,
+-158.918,
+18.5,
+2.6 
+],
+[
+ 19.278,
+-64.434,
+33,
+3.6 
+],
+[
+ -3.578,
+139.962,
+35,
+4.7 
+],
+[
+ -17.882,
+-178.548,
+595,
 4.9 
+],
+[
+ 46.836,
+141.793,
+10,
+4.7 
+],
+[
+ 38.812,
+-122.815,
+3.4,
+3.2 
 ],
 [
  19.492,
--66.319,
-25,
-3.5 
-],
-[
- -53.107,
-22.122,
-9.7,
-5.6 
-],
-[
- 52.375,
-159.851,
-64.1,
-4.4 
-],
-[
- 19.513,
--66.309,
-44,
-3.3 
-],
-[
- 61.504,
--140.689,
-0.1,
-2.6 
-],
-[
- 38.806,
--122.791,
-1.3,
-2.6 
-],
-[
- 60.162,
--153.031,
-121.9,
-2.5 
-],
-[
- 37.633,
-124.58,
-13.5,
-4.8 
-],
-[
- -35.23,
--105.841,
-10.1,
-4.8 
-],
-[
- 49.447,
--120.538,
-null,
-2.5 
-],
-[
- 1.359,
-98.946,
-115.8,
-4.2 
-],
-[
- -6.134,
-149.919,
-65.8,
-4.8 
-],
-[
- 45.767,
--76.346,
-18,
-3.1 
-],
-[
- 37.378,
--119.038,
-10.8,
-3 
-],
-[
- 19.306,
--66.033,
-46,
-3 
-],
-[
- -10.483,
--75.225,
-39.2,
-4.5 
-],
-[
- 54.668,
--153.735,
-9.8,
-3.5 
-],
-[
- 45.727,
--76.329,
-5,
-3.6 
-],
-[
- 45.767,
--76.397,
-9.8,
-4.4 
-],
-[
- 18.497,
--67.412,
-17,
-2.6 
-],
-[
- 46.94,
--113.309,
-11.6,
-2.8 
-],
-[
- -20.793,
--178.748,
-595.5,
-4.7 
-],
-[
- 17.65,
--66.271,
-32,
-3.1 
-],
-[
- -6.245,
-154.412,
-69.3,
-5.4 
-],
-[
- -19.192,
--69.201,
-120.1,
-4.4 
-],
-[
- -11.085,
-165.082,
-10.3,
-5.7 
-],
-[
- 31.559,
-86.467,
-27.6,
-4.4 
-],
-[
- -6.694,
-129.829,
-157.8,
-4.6 
-],
-[
- 59.309,
--151.993,
-54.4,
-4.3 
-],
-[
- 33.208,
--115.546,
-null,
-2.7 
-],
-[
- 18.134,
--67.691,
-10,
-2.9 
-],
-[
- 33.213,
--115.553,
-1.8,
-3.1 
-],
-[
- -43.625,
-172.426,
-14.6,
-4.2 
-],
-[
- 33.203,
--115.55,
-1.9,
-3.5 
-],
-[
- 36.068,
--120.012,
-62,
-2.6 
-],
-[
- -41.395,
--87.729,
-10.1,
-5 
-],
-[
- -56.086,
--26.799,
-37.3,
-5.3 
-],
-[
- 61.78,
--150.364,
-8.5,
-2.5 
-],
-[
- -22.154,
--179.564,
-584.6,
-5.1 
-],
-[
- 19.921,
--64.467,
-12,
-3.2 
-],
-[
- 31.581,
--116.107,
-14.7,
-2.8 
-],
-[
- 12.057,
--73.444,
-26.1,
-5 
-],
-[
- -11.601,
-113.644,
-4.9,
-4.4 
-],
-[
- 19.259,
--66.158,
-65,
-3.2 
-],
-[
- 19.35,
--66.01,
-23,
-2.9 
-],
-[
- 13.772,
-50.352,
-11.2,
-4.5 
-],
-[
- 15.075,
--92.292,
-118.4,
-4.4 
-],
-[
- 5.816,
--77.412,
-16.5,
-4.7 
-],
-[
- 52.89,
--168.728,
-45.8,
-4.3 
-],
-[
- 52.293,
-160.192,
-57.4,
-4.6 
-],
-[
- 34.858,
--119.239,
-12.7,
-3.2 
-],
-[
- 52.322,
-160.052,
-60.8,
-4.7 
-],
-[
- 38.747,
-144.395,
-35,
-4.5 
-],
-[
- 37.111,
-141.236,
-35,
-4.5 
-],
-[
- 35.365,
-141.456,
-35.1,
-4.4 
-],
-[
- -8.785,
-117.548,
-155,
-4.3 
-],
-[
- 51.515,
--176.36,
-31.4,
-2.7 
-],
-[
- -57.578,
--6.931,
-12.8,
-5.7 
-],
-[
- -53.004,
-22.413,
-16.5,
-5 
-],
-[
- 42.773,
--111.207,
-4.8,
-3.6 
-],
-[
- -52.881,
-10.365,
-10,
-5 
-],
-[
- 26.838,
-144.137,
-17.7,
-4.7 
-],
-[
- -53.058,
-22.177,
-15.8,
-5.3 
-],
-[
- 37.05,
-28.422,
-41.6,
-4.9 
-],
-[
- 8.616,
-141.522,
-41.1,
-4.6 
-],
-[
- 0.041,
-100.393,
-157.2,
-4.7 
-],
-[
- 33.373,
--116.841,
-6.6,
-2.9 
-],
-[
- 52.401,
--164.556,
-25.5,
+-64.413,
+72,
 3.4 
 ],
 [
- 40.399,
-141.821,
-25.9,
-4.9 
+ 52.253,
+-171.77,
+8.3,
+2.5 
 ],
 [
- -4.873,
-144.576,
-68.2,
+ 19.059,
+-68.603,
+176,
+3.9 
+],
+[
+ 61.225,
+-149.635,
+28.8,
+2.8 
+],
+[
+ 52.106,
+-170.037,
+4.9,
+2.8 
+],
+[
+ 18.998,
+-64.597,
+74,
+3.2 
+],
+[
+ 67.94,
+-157.356,
+20.3,
+2.5 
+],
+[
+ -23.799,
+179.992,
+541,
+4.7 
+],
+[
+ 52.768,
+-167.482,
+25.6,
+3 
+],
+[
+ -6.439,
+-80.766,
+27,
+4.7 
+],
+[
+ 62.577,
+-152.026,
+10.4,
+3.9 
+],
+[
+ 49.922,
+177.728,
+20,
+2.8 
+],
+[
+ 51.605,
+-175.263,
+37.9,
+2.6 
+],
+[
+ 1.546,
+30.796,
+10,
+5.4 
+],
+[
+ 46.39,
+152.961,
+34.6,
+4.7 
+],
+[
+ 36.639,
+-121.256,
+6,
+3.4 
+],
+[
+ 36.64,
+-121.256,
+6.2,
+2.7 
+],
+[
+ -58.4,
+-26.371,
+140.7,
+5.3 
+],
+[
+ 60.029,
+-152.711,
+99.3,
+2.9 
+],
+[
+ -32.303,
+-179.992,
+225.6,
 5.2 
 ],
 [
- -11.303,
-165.115,
-7.3,
-4.8 
+ 36.224,
+-120.35,
+10.8,
+2.5 
 ],
 [
- 39.508,
--121.988,
-22.6,
-2.6 
+ -44.508,
+167.865,
+2.3,
+4.9 
 ],
 [
- 53.833,
--164.138,
-41.1,
-2.7 
+ 62.16,
+-149.5,
+49.9,
+3.8 
 ],
 [
- 33.658,
--118.372,
-1.2,
-4 
+ 1.563,
+30.85,
+9.8,
+5.7 
 ],
 [
- 51.164,
-179.479,
-35.3,
-4.3 
+ 33.997,
+-117.168,
+11,
+2.9 
 ],
 [
- 30.397,
-103.1,
-10.5,
-4.4 
+ 2.286,
+127.192,
+104.6,
+4.7 
 ],
 [
- -18.527,
--71.402,
-59.3,
-4.3 
-],
-[
- 33.98,
--116.767,
-17.9,
-3.1 
-],
-[
- 26.835,
-57.757,
-10,
-4.5 
-],
-[
- 58.648,
--152.537,
-4.7,
-2.7 
-],
-[
- -10.88,
-113.842,
-10,
-4.6 
-],
-[
- 46.148,
-151.117,
-119.8,
+ -30.576,
+-178.189,
+71.7,
 5.3 
 ],
 [
- 51.49,
--175.997,
-23.6,
-2.7 
-],
-[
- 13.042,
--88.771,
-84.2,
-4.4 
-],
-[
- 60.387,
--152.464,
-96.7,
-2.7 
-],
-[
- 32.586,
-105.195,
-16.5,
-4.7 
-],
-[
- 18.221,
--68.557,
-101,
-2.9 
-],
-[
- 55.505,
--159.549,
-65.6,
-2.5 
-],
-[
- -4.546,
-153.212,
-67.8,
+ 37.32,
+141.418,
+16.2,
 5 
 ],
 [
- 31.468,
-86.569,
-26,
-5.1 
-],
-[
- 35.549,
--97.16,
-4.3,
-2.6 
-],
-[
- 1.059,
-97.44,
-41.7,
-4.8 
-],
-[
- 58.456,
--156.301,
-197,
-2.5 
-],
-[
- 1.063,
-97.397,
-34.2,
-4.6 
-],
-[
- 36.814,
-140.59,
-8.3,
-4.6 
-],
-[
- 66.635,
--135.821,
-18.9,
-3.6 
-],
-[
- -27.192,
--178.004,
-147,
-4.9 
-],
-[
- 59.779,
--153.386,
-130.8,
-2.8 
-],
-[
- 65.571,
--134.944,
-8.9,
-4.3 
-],
-[
- 62.858,
--148.7,
-61.2,
-3.1 
-],
-[
- 18.294,
--67.554,
-9,
-2.8 
-],
-[
- 38.819,
--122.804,
-4,
-3 
-],
-[
- 38.91,
-88.174,
-14.7,
-4.6 
-],
-[
- 60.082,
--152.549,
-103.3,
-2.9 
-],
-[
- 17.865,
--67.065,
-10,
-2.5 
-],
-[
- -4.58,
-152.824,
-69.1,
-5.7 
-],
-[
- -5.488,
-151.686,
-41.9,
-4.9 
-],
-[
- 39.916,
-72.333,
-25,
-4.3 
-],
-[
- 18.73,
--64.761,
-25,
-2.8 
-],
-[
- -15.59,
--73.177,
-109.8,
-5.4 
-],
-[
- -0.556,
-130.303,
-25.3,
-4.6 
-],
-[
- -18.624,
--173.45,
-7.1,
-4.9 
-],
-[
- 33.154,
-75.837,
-10.9,
+ 38.23,
+143.91,
+39.7,
 4.7 
 ],
 [
- 18.27,
--67.062,
-24,
+ 19.223,
+-65.119,
+35,
+3 
+],
+[
+ 40.116,
+21.847,
+3.7,
+5.2 
+],
+[
+ 40.073,
+21.978,
+13.9,
+4 
+],
+[
+ 61.165,
+-152.281,
+129,
 2.5 
 ],
 [
- 33.156,
-75.78,
-50.6,
-4.2 
+ 27.382,
+54.85,
+10,
+4.4 
 ],
 [
- 0.775,
-92.437,
-32.5,
+ 36.558,
+70.359,
+216.9,
+4.4 
+],
+[
+ -17.771,
+-177.749,
+478.7,
+4.6 
+],
+[
+ 59.471,
+-147.423,
+2.9,
+3.2 
+],
+[
+ -19.367,
+-70.719,
+19.2,
+4.8 
+],
+[
+ 18.237,
+-63.71,
+92,
+2.8 
+],
+[
+ 36.501,
+70.432,
+203.8,
+5.2 
+],
+[
+ 51.573,
+-167.048,
+9.9,
+4.8 
+],
+[
+ 36.856,
+-121.32,
+6.3,
+2.5 
+],
+[
+ 51.552,
+-166.98,
+26.7,
+3.2 
+],
+[
+ 59.508,
+-147.414,
+2.5,
+2.5 
+],
+[
+ 51.597,
+-166.997,
+26.8,
+3.3 
+],
+[
+ 18.889,
+-65.001,
+14,
+2.8 
+],
+[
+ 51.525,
+-166.941,
+5,
 5.7 
 ],
 [
- 18.783,
--64.65,
-49,
-2.7 
+ 35.461,
+-92.217,
+0.1,
+2.8 
 ],
 [
- 36.284,
-69.759,
-140.4,
-4 
+ 59.614,
+-152.849,
+94.5,
+2.5 
+],
+[
+ 52.942,
+-166.793,
+12.4,
+2.6 
 ],
 [
  18.973,
--64.101,
-58,
-3.1 
+-104.042,
+10,
+3.7 
 ],
 [
- -1.142,
--77.477,
-171,
-4.3 
-],
-[
- 62.12,
--150.215,
-53,
-3.3 
-],
-[
- 51.991,
--171.71,
-13.6,
+ 18.848,
+-64.571,
+5,
 2.7 
 ],
 [
- -8.236,
-122.099,
-204.1,
-4.6 
+ -23.811,
+-66.402,
+192.8,
+5.7 
 ],
 [
- 56.2,
-162.696,
+ 17.989,
+-68.477,
+98,
+3.1 
+],
+[
+ -35.91,
+-102.919,
+10.2,
+5.2 
+],
+[
+ 55.355,
+-134.956,
+24.3,
+2.5 
+],
+[
+ 18.584,
+-64.405,
+142,
+3.2 
+],
+[
+ 4.701,
+96.766,
+24.2,
+5.2 
+],
+[
+ 27.31,
+54.887,
+10.3,
+4.5 
+],
+[
+ 4.713,
+96.715,
+25.5,
+5.3 
+],
+[
+ 1.624,
+30.914,
+10,
+5.2 
+],
+[
+ 17.209,
+-68.166,
+27,
+2.9 
+],
+[
+ 44.762,
+-111.055,
+10,
+2.9 
+],
+[
+ -4.842,
+152.271,
+39.1,
+4.9 
+],
+[
+ 27.312,
+54.97,
 10,
 5 
 ],
 [
- 58.676,
--152.556,
-70.6,
-3.3 
-],
-[
- -27.867,
--66.635,
-188.8,
-4.5 
-],
-[
- 45.612,
--111.737,
-9.5,
-2.7 
-],
-[
- -6.54,
-129.879,
-148.3,
+ 14.32,
+145.768,
+86,
 4.7 
 ],
 [
- 58.749,
--153.882,
-9.5,
-2.5 
-],
-[
- 60.183,
--152.704,
-109.6,
-2.7 
-],
-[
- 37.095,
--112.117,
-15.3,
-2.5 
-],
-[
- 50.891,
-178.862,
-35,
-4.5 
-],
-[
- 36.682,
--117.746,
-12,
-2.6 
-],
-[
- 32.209,
--115.259,
-17.8,
-2.6 
-],
-[
- 35.62,
--90.55,
-9.9,
-2.8 
-],
-[
- 63.377,
--151.368,
-8.4,
-3.2 
-],
-[
- 52.481,
--174.193,
-192.1,
-2.9 
-],
-[
- 17.901,
--67.309,
-8,
-2.7 
-],
-[
- 58.752,
--153.882,
-11.2,
-2.9 
-],
-[
- 58.768,
--153.886,
-12.4,
-4.4 
-],
-[
- 52.778,
--168.949,
-23.8,
-3.6 
-],
-[
- 18.748,
-145.294,
-601.8,
-6.8 
-],
-[
- -18.096,
--175.136,
-201.9,
-4.9 
-],
-[
- 31.128,
--104.746,
-4.3,
-2.7 
-],
-[
- -3.037,
-130.264,
-37.8,
-4.2 
-],
-[
- 2.782,
-125.31,
-155.5,
-4.9 
-],
-[
- 28.395,
-51.791,
-10.5,
-4.8 
-],
-[
- 55.062,
--159.403,
-24.1,
-2.6 
-],
-[
- 19.267,
--155.568,
-11.8,
-2.6 
-],
-[
- 62.266,
--151.424,
-86.7,
-3 
-],
-[
- 41.047,
--123.333,
-34.9,
-2.5 
-],
-[
- 48.586,
-154.872,
-54.1,
-4.5 
-],
-[
- -6.509,
-129.702,
-158.6,
-4.7 
-],
-[
- 34.01,
--37.547,
+ 40.141,
+21.874,
 10,
 4.9 
 ],
 [
- 51.951,
--171.6,
-21.6,
-2.7 
+ -15.797,
+-173.797,
+42.8,
+5.6 
 ],
 [
- 36.778,
-140.5,
-29,
-4.6 
-],
-[
- -7.949,
--79.913,
-55.6,
-4.9 
-],
-[
- 59.585,
--152.929,
-96.5,
+ 40.085,
+-116.782,
+null,
 2.5 
 ],
 [
- -3.003,
-130.185,
-36.7,
-4.4 
+ 4.698,
+96.687,
+10,
+6.1 
 ],
 [
- 62.317,
--151.153,
-86.5,
+ 35.513,
+-96.825,
+7.9,
 2.6 
 ],
 [
- 19.406,
--64.154,
-104,
+ 18.596,
+-68.7,
+84,
 3.4 
 ],
 [
- 60.83,
--151.802,
-76.5,
-3.1 
-],
-[
- 51.247,
--177.9,
-23.4,
-2.5 
-],
-[
- -19.872,
--177.779,
-548.8,
+ 33.041,
+92.758,
+35,
 4.6 
 ],
 [
- 52.224,
--171.773,
-7.2,
-2.5 
-],
-[
- 10.308,
--85.816,
-40.5,
-4.4 
-],
-[
- 0.76,
-125.368,
-85.7,
-4.8 
-],
-[
- 10.246,
--85.893,
-39.4,
-4.3 
-],
-[
- 21.914,
-143.807,
-175.6,
-5.1 
-],
-[
- 44.026,
-147.811,
-53.4,
-5.6 
-],
-[
- 29.531,
-52.699,
-13.9,
-4.4 
-],
-[
- 60.684,
--149.46,
-21,
-2.6 
-],
-[
- 52.184,
--171.714,
-9.5,
-3.2 
-],
-[
- 52.508,
--171.941,
-45,
-5.7 
-],
-[
- -7.635,
-128.012,
-171,
-4.4 
-],
-[
- -6.509,
-128.066,
-317.7,
-4.6 
-],
-[
- 1.176,
--101.293,
-10,
-4.7 
-],
-[
- 63.341,
--150.139,
-110.2,
-2.7 
-],
-[
- 55.614,
--135.279,
-20,
+ 54.659,
+-162.271,
+49.7,
 3 
 ],
 [
- 53.543,
--167.003,
-78.1,
+ 56.237,
+-159.065,
+102,
+3.2 
+],
+[
+ 59.968,
+-152.505,
+76.2,
 2.5 
 ],
 [
- 62.909,
--150.919,
-102.3,
+ 18.673,
+145.683,
+207.4,
+4.7 
+],
+[
+ 62.222,
+-145.729,
+11.1,
+3.5 
+],
+[
+ 19.166,
+-155.45,
+41.2,
+2.6 
+],
+[
+ 19.086,
+-155.472,
+40.1,
+2.6 
+],
+[
+ -17.285,
+-70.749,
+120.7,
+4.5 
+],
+[
+ 44.755,
+-110.919,
+10.7,
 2.7 
 ],
 [
- 18.569,
--68.453,
-125,
-3.6 
+ 65.304,
+-144.124,
+13.5,
+3.5 
 ],
 [
- -3.109,
--77.589,
-23.5,
-4.6 
+ 44.761,
+-110.917,
+14,
+3.1 
 ],
 [
- -26.177,
--69.223,
-7.8,
-5.6 
+ 36.556,
+-97.664,
+5,
+3.3 
 ],
 [
- -21.01,
--68.545,
-130.7,
-5.3 
+ -55.563,
+-28.469,
+10,
+5.1 
 ],
 [
- 26.734,
-57.813,
-25.2,
-4.4 
+ 41.401,
+141.984,
+63.3,
+4.5 
+],
+[
+ 36.495,
+-97.697,
+5,
+2.9 
+],
+[
+ 41.793,
+-81.323,
+6,
+3.2 
 ] 
 ];
 data.addColumn('number','Latitude');
@@ -3502,7 +3223,7 @@ function displayChartEQ() {
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-23" style="background:;">
+      <slide class="" id="slide-26" style="background:;">
   <hgroup>
     <h2>Org chart</h2>
   </hgroup>
@@ -3514,14 +3235,14 @@ plot(Org)
 
 <!-- OrgChart generated in R 3.0.1 by googleVis 0.4.3 package -->
 
-<!-- Sun May 19 13:31:38 2013 -->
+<!-- Mon Jul  8 09:15:50 2013 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataOrgChartID30301de3c552 () {
+function gvisDataOrgChartID4186548b087 () {
   var data = new google.visualization.DataTable();
   var datajson =
 [
@@ -3589,8 +3310,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartOrgChartID30301de3c552() {
-  var data = gvisDataOrgChartID30301de3c552();
+function drawChartOrgChartID4186548b087() {
+  var data = gvisDataOrgChartID4186548b087();
   var options = {};
 options["width"] =    600;
 options["height"] =    250;
@@ -3598,7 +3319,7 @@ options["size"] = "large";
 options["allowCollapse"] = true;
 
      var chart = new google.visualization.OrgChart(
-       document.getElementById('OrgChartID30301de3c552')
+       document.getElementById('OrgChartID4186548b087')
      );
      chart.draw(data,options);
     
@@ -3622,9 +3343,9 @@ options["allowCollapse"] = true;
     pkgs.push(chartid);
 
   // Add the drawChart function to the global list of callbacks
-  callbacks.push(drawChartOrgChartID30301de3c552);
+  callbacks.push(drawChartOrgChartID4186548b087);
 })();
-function displayChartOrgChartID30301de3c552() {
+function displayChartOrgChartID4186548b087() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -3650,12 +3371,12 @@ function displayChartOrgChartID30301de3c552() {
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartOrgChartID30301de3c552"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartOrgChartID4186548b087"></script>
  
 
 <!-- divChart -->
 
-<div id="OrgChartID30301de3c552"
+<div id="OrgChartID4186548b087"
   style="width: 600px; height: 250px;">
 </div>
 
@@ -3663,7 +3384,7 @@ function displayChartOrgChartID30301de3c552() {
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-24" style="background:;">
+      <slide class="" id="slide-27" style="background:;">
   <hgroup>
     <h2>Org chart data</h2>
   </hgroup>
@@ -3691,7 +3412,7 @@ function displayChartOrgChartID30301de3c552() {
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-25" style="background:;">
+      <slide class="" id="slide-28" style="background:;">
   <hgroup>
     <h2>Tree map</h2>
   </hgroup>
@@ -3705,14 +3426,14 @@ plot(Tree)
 
 <!-- TreeMap generated in R 3.0.1 by googleVis 0.4.3 package -->
 
-<!-- Sun May 19 13:31:39 2013 -->
+<!-- Mon Jul  8 09:15:50 2013 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataTreeMapID303054af99d2 () {
+function gvisDataTreeMapID41873da304 () {
   var data = new google.visualization.DataTable();
   var datajson =
 [
@@ -3792,14 +3513,14 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartTreeMapID303054af99d2() {
-  var data = gvisDataTreeMapID303054af99d2();
+function drawChartTreeMapID41873da304() {
+  var data = gvisDataTreeMapID41873da304();
   var options = {};
 options["width"] =    450;
 options["height"] =    320;
 
      var chart = new google.visualization.TreeMap(
-       document.getElementById('TreeMapID303054af99d2')
+       document.getElementById('TreeMapID41873da304')
      );
      chart.draw(data,options);
     
@@ -3823,9 +3544,9 @@ options["height"] =    320;
     pkgs.push(chartid);
 
   // Add the drawChart function to the global list of callbacks
-  callbacks.push(drawChartTreeMapID303054af99d2);
+  callbacks.push(drawChartTreeMapID41873da304);
 })();
-function displayChartTreeMapID303054af99d2() {
+function displayChartTreeMapID41873da304() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -3851,12 +3572,12 @@ function displayChartTreeMapID303054af99d2() {
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTreeMapID303054af99d2"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTreeMapID41873da304"></script>
  
 
 <!-- divChart -->
 
-<div id="TreeMapID303054af99d2"
+<div id="TreeMapID41873da304"
   style="width: 450px; height: 320px;">
 </div>
 
@@ -3864,7 +3585,7 @@ function displayChartTreeMapID303054af99d2() {
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-26" style="background:;">
+      <slide class="" id="slide-29" style="background:;">
   <hgroup>
     <h2>Annotated time line data</h2>
   </hgroup>
@@ -3887,7 +3608,7 @@ function displayChartTreeMapID303054af99d2() {
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-27" style="background:;">
+      <slide class="" id="slide-30" style="background:;">
   <hgroup>
     <h2>Annotated time line</h2>
   </hgroup>
@@ -3904,7 +3625,7 @@ plot(A1)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-28" style="background:;">
+      <slide class="" id="slide-31" style="background:;">
   <hgroup>
     <h2>Merging gvis-objects</h2>
   </hgroup>
@@ -3923,7 +3644,7 @@ GBM &lt;- gvisMerge(gvisMerge(G,B, horizontal=FALSE),
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-29" style="background:;">
+      <slide class="" id="slide-32" style="background:;">
   <hgroup>
     <h2>Display merged gvis-objects</h2>
   </hgroup>
@@ -3937,7 +3658,7 @@ GBM &lt;- gvisMerge(gvisMerge(G,B, horizontal=FALSE),
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-30" style="background:;">
+      <slide class="" id="slide-33" style="background:;">
   <hgroup>
     <h2>Embedding googleVis chart into your web page</h2>
   </hgroup>
@@ -3960,7 +3681,7 @@ GBM &lt;- gvisMerge(gvisMerge(G,B, horizontal=FALSE),
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-31" style="background:;">
+      <slide class="" id="slide-34" style="background:;">
   <hgroup>
     <h2>Embedding googleVis output via iframe</h2>
   </hgroup>
@@ -3981,7 +3702,7 @@ Your browser does not support iframe
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-32" style="background:;">
+      <slide class="" id="slide-35" style="background:;">
   <hgroup>
     <h2>iFrame output</h2>
   </hgroup>
@@ -3992,7 +3713,7 @@ Your browser does not support iframe
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-33" style="background:;">
+      <slide class="" id="slide-36" style="background:;">
   <hgroup>
     <h2>Including googleVis output in knitr with plot statement</h2>
   </hgroup>
@@ -4009,7 +3730,687 @@ Your browser does not support iframe
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-34" style="background:;">
+      <slide class="segue dark" id="slide-37" style="background:;">
+  <hgroup>
+    <h2>googleVis on shiny</h2>
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-38" style="background:;">
+  <hgroup>
+    <h2>Introduction to shiny</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>R Package shiny from RStudio supplies:
+
+<ul>
+<li>interactive web application  / dynamic HTML-Pages with plain R</li>
+<li>GUI for own needs</li>
+<li>Website as server</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-39" style="background:;">
+  <hgroup>
+    <h2>What makes shiny special ?</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>very simple: ready to use components (widgets)</li>
+<li>event-driven (reactive programming): input &lt;-&gt; output</li>
+<li>communication bidirectional with web sockets (HTTP)</li>
+<li>JavaScript with JQuery (HTML) </li>
+<li>CSS with bootstrap</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-40" style="background:;">
+  <hgroup>
+    <h2>Getting started: Setup</h2>
+  </hgroup>
+  <article>
+    <ol>
+<li><code>R&gt; install.packages(&quot;shiny&quot;)</code> from CRAN</li>
+<li>Create directory <code>HelloShiny</code> </li>
+<li>Edit <code>global.r</code></li>
+<li>Edit <code>ui.r</code></li>
+<li>Edit <code>server.r</code></li>
+<li><code>R&gt; shiny::runApp(&quot;HelloShiny&quot;)</code></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-41" style="background:;">
+  <hgroup>
+    <h2>Getting started: global.R</h2>
+  </hgroup>
+  <article>
+    <p>This file contains global variables, libraries etc.  [optional]</p>
+
+<pre><code class="r">## E.g.
+library(googleVis)
+library(Cairo)
+The_Answer &lt;- 42
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-42" style="background:;">
+  <hgroup>
+    <h2>Getting started: server.R</h2>
+  </hgroup>
+  <article>
+    <p>The Core Component with functionality for input and output as plots, 
+tables and plain text.</p>
+
+<pre><code class="r">shinyServer(function(input, output) {
+       output$distPlot &lt;- renderPlot({
+         dist &lt;- rnorm(input$obs)
+         hist(dist)
+         })
+})
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-43" style="background:;">
+  <hgroup>
+    <h2>Getting started: ui.R</h2>
+  </hgroup>
+  <article>
+    <p>This file creates the structure of HTML</p>
+
+<pre><code class="r">shinyUI(pageWithSidebar(
+   headerPanel(&quot;Example Hello Shiny&quot;),
+   sidebarPanel(
+      sliderInput(&quot;obs&quot;,  &quot;&quot;, 0, 1000, 500)
+   ),
+   mainPanel(
+      plotOutput(&quot;distPlot&quot;)
+   )
+))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-44" style="background:;">
+  <hgroup>
+    <h2>Getting strated: runApp</h2>
+  </hgroup>
+  <article>
+    <p><code>R&gt; shiny::runApp(&#39;HelloShiny&#39;)</code></p>
+
+<iframe src="http://glimmer.rstudio.com/mages/HelloShiny/" width="100%" 
+height="100%" frameborder="0">Loading</iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-45" style="background:;">
+  <hgroup>
+    <h2>Details for ui.r / part 1</h2>
+  </hgroup>
+  <article>
+    <p>Ready-to-Use widgets for input parameter:</p>
+
+<ul>
+<li>selectInput</li>
+<li>checkboxInput</li>
+<li>numericInput</li>
+<li>sliderInput</li>
+<li>textInput</li>
+<li>radioButtons</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-46" style="background:;">
+  <hgroup>
+    <h2>Details for ui.r / part 2</h2>
+  </hgroup>
+  <article>
+    <p>Elements for structural usage:</p>
+
+<ul>
+<li>conditionalPanel</li>
+<li>tabsetPanel + tabPanel</li>
+<li>includeMarkdown</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-47" style="background:;">
+  <hgroup>
+    <h2>Details for server.r</h2>
+  </hgroup>
+  <article>
+    <p>output components:</p>
+
+<ul>
+<li>renderPlot</li>
+<li>renderPrint</li>
+<li>renderGvis </li>
+<li>renderTable</li>
+</ul>
+
+<p>additional compontents:</p>
+
+<ul>
+<li>downloadHandler</li>
+<li>fileInput</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-48" style="background:;">
+  <hgroup>
+    <h2>Example 1: Select data for a scatter chart</h2>
+  </hgroup>
+  <article>
+    <iframe src="http://glimmer.rstudio.com/mages/LancasterExample_1/" width="100%" 
+height="100%" frameborder="0">Loading</iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-49" style="background:;">
+  <hgroup>
+    <h2>Example 1: server.R</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r"># Contributed by Joe Cheng, February 2013 Requires googleVis version 0.4
+# and shiny 0.4 or greater
+library(googleVis)
+
+shinyServer(function(input, output) {
+    datasetInput &lt;- reactive({
+        switch(input$dataset, rock = rock, pressure = pressure, cars = cars)
+    })
+    output$view &lt;- renderGvis({
+        # instead of renderPlot
+        gvisScatterChart(datasetInput(), options = list(width = 400, height = 400))
+    })
+})
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-50" style="background:;">
+  <hgroup>
+    <h2>Example 1: ui.R</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">shinyUI(pageWithSidebar(
+  headerPanel(&quot;Example 1: scatter chart&quot;),
+  sidebarPanel(
+    selectInput(&quot;dataset&quot;, &quot;Choose a dataset:&quot;, 
+                choices = c(&quot;rock&quot;, &quot;pressure&quot;, &quot;cars&quot;))
+  ),
+  mainPanel(
+    htmlOutput(&quot;view&quot;) ## not plotOut!
+  )
+))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-51" style="background:;">
+  <hgroup>
+    <h2>Example 2: Interactive table</h2>
+  </hgroup>
+  <article>
+    <iframe src="http://glimmer.rstudio.com/mages/LancasterExample_2/" width="100%" 
+height="100%" frameborder="0">Loading</iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-52" style="background:;">
+  <hgroup>
+    <h2>Example 2: server.R</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r"># Diego de Castillo, February 2013
+library(datasets)
+library(googleVis)
+shinyServer(function(input, output) {
+  myOptions &lt;- reactive({
+    list(
+      page=ifelse(input$pageable==TRUE,&#39;enable&#39;,&#39;disable&#39;),
+      pageSize=input$pagesize,
+      height=400
+    )
+  })
+  output$myTable &lt;- renderGvis({
+    gvisTable(Population[,1:5],options=myOptions())         
+  })
+})
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-53" style="background:;">
+  <hgroup>
+    <h2>Example 2: ui.R</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">shinyUI(pageWithSidebar(
+  headerPanel(&quot;Example 2: pageable table&quot;),
+  sidebarPanel(
+    checkboxInput(inputId = &quot;pageable&quot;, label = &quot;Pageable&quot;),
+    conditionalPanel(&quot;input.pageable==true&quot;,
+                     numericInput(inputId = &quot;pagesize&quot;,
+                                  label = &quot;Countries per page&quot;,10))    
+  ),
+  mainPanel(
+    htmlOutput(&quot;myTable&quot;)
+  )
+))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-54" style="background:;">
+  <hgroup>
+    <h2>Example 3: Animated geo chart</h2>
+  </hgroup>
+  <article>
+    <iframe src="http://glimmer.rstudio.com/mages/LancasterExample_3/" width="100%" 
+height="100%" frameborder="0">Loading</iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-55" style="background:;">
+  <hgroup>
+    <h2>Example 3: global.R</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">## Markus Gesmann, February 2013
+## Prepare data to be displayed
+## Load presidential election data by state from 1932 - 2012
+dat &lt;- read.csv(&quot;http://dl.dropboxusercontent.com/u/7586336/blogger/US%20Presidential%20Elections.csv&quot;, 
+                stringsAsFactors=TRUE)
+
+
+## Add min and max values to the data
+datminmax = data.frame(state=rep(c(&quot;Min&quot;, &quot;Max&quot;),21), 
+                       demVote=rep(c(0, 100),21),
+                       year=sort(rep(seq(1932,2012,4),2)))
+dat &lt;- rbind(dat[,1:3], datminmax)
+require(googleVis)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-56" style="background:;">
+  <hgroup>
+    <h2>Example 3: server.R</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">shinyServer(function(input, output) {
+  myYear &lt;- reactive({
+    input$Year
+  })
+  output$year &lt;- renderText({
+    paste(&quot;Democratic share of the presidential vote in&quot;, myYear())
+  })
+  output$gvis &lt;- renderGvis({
+    myData &lt;- subset(dat, (year &gt; (myYear()-1)) &amp; (year &lt; (myYear()+1)))
+    gvisGeoChart(myData,
+                 locationvar=&quot;state&quot;, colorvar=&quot;demVote&quot;,
+                 options=list(region=&quot;US&quot;, displayMode=&quot;regions&quot;, 
+                              resolution=&quot;provinces&quot;,
+                              width=400, height=380,
+                              colorAxis=&quot;{colors:[&#39;#FFFFFF&#39;, &#39;#0000FF&#39;]}&quot;
+                 ))     
+    })
+})
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-57" style="background:;">
+  <hgroup>
+    <h2>Example 3: ui.R</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">shinyUI(pageWithSidebar(
+  headerPanel(&quot;Example 3: animated geo chart&quot;),
+  sidebarPanel(
+    sliderInput(&quot;Year&quot;, &quot;Election year to be displayed:&quot;, 
+                min=1932, max=2012, value=2012,  step=4,
+                format=&quot;###0&quot;,animate=TRUE)
+  ),
+  mainPanel(
+    h3(textOutput(&quot;year&quot;)), 
+    htmlOutput(&quot;gvis&quot;)
+  )
+))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-58" style="background:;">
+  <hgroup>
+    <h2>Example 4: googleVis with interaction</h2>
+  </hgroup>
+  <article>
+    <iframe src="http://glimmer.rstudio.com/mages/Interaction/" width="100%" 
+height="100%" frameborder="0">Loading</iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-59" style="background:;">
+  <hgroup>
+    <h2>Example 4: server.R / part 1</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">require(googleVis)
+shinyServer(function(input, output) {
+  datasetInput &lt;- reactive({
+    switch(input$dataset, &quot;pressure&quot; = pressure, &quot;cars&quot; = cars)
+  })
+  output$view &lt;- renderGvis({    
+    jscode &lt;- &quot;var sel = chart.getSelection();
+    var row = sel[0].row;
+    var text = data.getValue(row, 1);               
+    $(&#39;input#selected&#39;).val(text);
+    $(&#39;input#selected&#39;).trigger(&#39;change&#39;);&quot;    
+    gvisScatterChart(data.frame(datasetInput()),
+                     options=list(gvis.listener.jscode=jscode,
+                                  height=200, width=300))
+
+  })
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-60" style="background:;">
+  <hgroup>
+    <h2>Example 4: server.R / part 2</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">  output$distPlot &lt;- renderPlot({
+    if (is.null(input$selected))
+      return(NULL)
+
+    dist &lt;- rnorm(input$selected)
+    hist(dist,main=input$selected)
+  })
+
+  output$selectedOut &lt;- renderUI({
+    textInput(&quot;selected&quot;, &quot;&quot;, value=&quot;10&quot;)
+  })
+  outputOptions(output, &quot;selectedOut&quot;, suspendWhenHidden=FALSE)   
+})
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-61" style="background:;">
+  <hgroup>
+    <h2>Example 4: ui.R</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">require(googleVis)
+shinyUI(pageWithSidebar(
+  headerPanel(&quot;&quot;, windowTitle=&quot;Example googleVis with interaction&quot;),
+  sidebarPanel(
+    tags$head(tags$style(type=&#39;text/css&#39;, &quot;#selected{ display: none; }&quot;)),
+    selectInput(&quot;dataset&quot;, &quot;Choose a dataset:&quot;, 
+                choices = c(&quot;pressure&quot;, &quot;cars&quot;)),
+    uiOutput(&quot;selectedOut&quot;)
+  ),
+  mainPanel(
+    tabsetPanel(
+      tabPanel(&quot;Main&quot;,
+               htmlOutput(&quot;view&quot;),
+               plotOutput(&quot;distPlot&quot;, width=&quot;300px&quot;, height=&quot;200px&quot;)),
+      tabPanel(&quot;About&quot;, includeMarkdown(&#39;README.md&#39;)
+      ))))
+)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-62" style="background:;">
+  <hgroup>
+    <h2>Reactive model</h2>
+  </hgroup>
+  <article>
+    <p>Three objects build the framework:</p>
+
+<ul>
+<li><p>reactive source     [selectInput] 
+<img src="assets/img/source.png" alt="source" style="vertical-align:middle;"></p></li>
+<li><p>reactive conductor  [db-connect / calculate]
+<img src="assets/img/conductor.png" alt="conductor" style="vertical-align:middle;"></p></li>
+<li><p>reactive endpoint    [renderPlot/renderTable]
+<img src="assets/img/endpoint.png" alt="endpoint" style="vertical-align:middle;"></p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-63" style="background:;">
+  <hgroup>
+    <h2>Reactive model</h2>
+  </hgroup>
+  <article>
+    <p><img src="assets/img/reactivemodel_1.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-64" style="background:;">
+  <hgroup>
+    <h2>Reactive model</h2>
+  </hgroup>
+  <article>
+    <p><img src="assets/img/reactivemodel_2.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-65" style="background:;">
+  <hgroup>
+    <h2>Reactive model</h2>
+  </hgroup>
+  <article>
+    <p><img src="assets/img/reactivemodel_3.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-66" style="background:;">
+  <hgroup>
+    <h2>Reactive model</h2>
+  </hgroup>
+  <article>
+    <p><img src="assets/img/reactivemodel_4.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-67" style="background:;">
+  <hgroup>
+    <h2>Reactive model</h2>
+  </hgroup>
+  <article>
+    <p><img src="assets/img/reactivemodel_5.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-68" style="background:;">
+  <hgroup>
+    <h2>Reactive model</h2>
+  </hgroup>
+  <article>
+    <p><img src="assets/img/reactivemodel_6.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-69" style="background:;">
+  <hgroup>
+    <h2>Reactive model</h2>
+  </hgroup>
+  <article>
+    <p><img src="assets/img/reactivemodel_7.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-70" style="background:;">
+  <hgroup>
+    <h2>Reactive model</h2>
+  </hgroup>
+  <article>
+    <p><img src="assets/img/reactivemodel_8.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-71" style="background:;">
+  <hgroup>
+    <h2>Reactive model</h2>
+  </hgroup>
+  <article>
+    <p><img src="assets/img/reactivemodel_9.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-72" style="background:;">
+  <hgroup>
+    <h2>Reactive model</h2>
+  </hgroup>
+  <article>
+    <p><img src="assets/img/reactivemodel_10.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-73" style="background:;">
+  <hgroup>
+    <h2>Reactive model</h2>
+  </hgroup>
+  <article>
+    <p><img src="assets/img/reactivemodel_11.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-74" style="background:;">
+  <hgroup>
+    <h2>Further reading and examples</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li><a href="http://www.rstudio.com/shiny/">Shiny by RStudio</a></li>
+<li><a href="http://lamages.blogspot.co.uk/2013/02/first-steps-of-using-googlevis-on-shiny.html">First steps with googleVis on shiny</a></li>
+<li><a href="http://glimmer.rstudio.com:8787">RStudio Glimmer Server</a></li>
+<li><a href="http://glimmer.rstudio.com/reinholdsson/shiny-dashboard/">BI Dashbord with shiny and rCharts</a></li>
+<li><a href="https://github.com/ramnathv/shinyExamples">Shiny examples with slidify</a></li>
+<li><a href="http://www.r-bloggers.com/?s=shiny">Shiny on R-Bloggers</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="segue dark" id="slide-75" style="background:;">
+  <hgroup>
+    <h2>The End. Questions?</h2>
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-76" style="background:;">
+  <hgroup>
+    <h2>How we created these slides</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">library(slidify)
+author(&quot;googleVis_Tutorial&quot;)
+## Edit the file index.Rmd file and then
+slidify(&quot;index.Rmd&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-77" style="background:;">
   <hgroup>
     <h2>Blog articles with googleVis tips</h2>
   </hgroup>
@@ -4027,18 +4428,18 @@ Your browser does not support iframe
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-35" style="background:;">
+      <slide class="" id="slide-78" style="background:;">
   <hgroup>
     <h2>Other R packages</h2>
   </hgroup>
   <article>
     <ul>
-<li> <a href="http://animation.yihui.name/">R animation package allows to create SWF, GIF and MPEG directly</a></li>
-<li> <a href="http://cran.r-project.org/web/packages/iplots/">iplots: iPlots - interactive graphics for R</a></li>
-<li> <a href="http://rforge.net/Acinonyx/index.html">Acinonyx aka iPlots eXtreme</a></li>
-<li> <a href="http://cran.r-project.org/web/packages/gridSVG/index.html">gridSVG: Export grid graphics as SVG</a></li>
-<li> <a href="http://cran.r-project.org/web/packages/plotGoogleMaps/">plotGoogleMaps: Plot HTML output with Google Maps API and your own data</a></li>
-<li> <a href="http://cran.r-project.org/web/packages/RgoogleMaps/index.html">RgoogleMaps: Overlays on Google map tiles in R</a></li>
+<li><a href="http://animation.yihui.name/">R animation package allows to create SWF, GIF and MPEG directly</a></li>
+<li><a href="http://cran.r-project.org/web/packages/iplots/">iplots: iPlots - interactive graphics for R</a></li>
+<li><a href="http://rforge.net/Acinonyx/index.html">Acinonyx aka iPlots eXtreme</a></li>
+<li><a href="http://cran.r-project.org/web/packages/gridSVG/index.html">gridSVG: Export grid graphics as SVG</a></li>
+<li><a href="http://cran.r-project.org/web/packages/plotGoogleMaps/">plotGoogleMaps: Plot HTML output with Google Maps API and your own data</a></li>
+<li><a href="http://cran.r-project.org/web/packages/RgoogleMaps/index.html">RgoogleMaps: Overlays on Google map tiles in R</a></li>
 <li><a href="http://ramnathv.github.io/rCharts/">rCharts</a></li>
 <li><a href="https://github.com/nachocab/clickme">clickme</a></li>
 </ul>
@@ -4047,53 +4448,7 @@ Your browser does not support iframe
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-36" style="background:;">
-  <hgroup>
-    <h2>How I created these slides</h2>
-  </hgroup>
-  <article>
-    <pre><code class="r">library(slidify)
-setwd(&quot;~/Dropbox/Lancaster/&quot;)
-author(&quot;Introduction_to_googleVis&quot;)
-## Edit the file index.Rmd file and then
-slidify(&quot;index.Rmd&quot;)
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="" id="slide-37" style="background:;">
-  <hgroup>
-    <h2>The End. So what ...?</h2>
-  </hgroup>
-  <article>
-    <ul>
-<li><p>googleVis brings interactive plots to R</p></li>
-<li><p>Use them to engage with other</p></li>
-<li><p>No more boring data</p></li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="" id="slide-38" style="background:;">
-  <hgroup>
-    <h2>Contact</h2>
-  </hgroup>
-  <article>
-    <ul>
-<li>Markus Gesmann</li>
-<li><a href="mailto:markus.gesmann@gmail.com">markus.gesmann gmail.com</a></li>
-<li>My blog: <a href="http://lamages.blogspot.com">http://lamages.blogspot.com</a></li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="" id="slide-39" style="background:;">
+      <slide class="" id="slide-79" style="background:;">
   <hgroup>
     <h2>Thanks</h2>
   </hgroup>
@@ -4120,7 +4475,7 @@ files<br></li>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-40" style="background:;">
+      <slide class="" id="slide-80" style="background:;">
   <hgroup>
     <h2>Thanks</h2>
   </hgroup>
@@ -4145,7 +4500,7 @@ when displaying data with special characters in column names</li>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-41" style="background:;">
+      <slide class="" id="slide-81" style="background:;">
   <hgroup>
     <h2>Thanks</h2>
   </hgroup>
@@ -4172,7 +4527,7 @@ providing a solution</li>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-42" style="background:;">
+      <slide class="" id="slide-82" style="background:;">
   <hgroup>
     <h2>Thanks</h2>
   </hgroup>
@@ -4188,13 +4543,14 @@ charts accept also date variables for the x-axis. </li>
 WorldBank demo using the WDI package.</li>
 <li>John Muschelli for suggesting to add &#39;hovervar&#39; as an additional
 argument to gvisGeoChart.</li>
+<li><a href="https://github.com/ramnathv">Ramnath Vaidyanathan</a> for slidify.</li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-43" style="background:;">
+      <slide class="" id="slide-83" style="background:;">
   <hgroup>
     <h2>Session Info</h2>
   </hgroup>
@@ -4206,7 +4562,7 @@ argument to gvisGeoChart.</li>
 ## Platform: x86_64-apple-darwin10.8.0 (64-bit)
 ## 
 ## locale:
-## [1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8
+## [1] de_DE.UTF-8/de_DE.UTF-8/de_DE.UTF-8/C/de_DE.UTF-8/de_DE.UTF-8
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
@@ -4216,7 +4572,7 @@ argument to gvisGeoChart.</li>
 ## 
 ## loaded via a namespace (and not attached):
 ## [1] digest_0.6.3   evaluate_0.4.3 formatR_0.7    knitr_1.2     
-## [5] markdown_0.5.4 stringr_0.6.2  tools_3.0.1    whisker_0.3-2 
+## [5] markdown_0.5.5 stringr_0.6.2  tools_3.0.1    whisker_0.3-2 
 ## [9] yaml_2.1.7
 </code></pre>
 

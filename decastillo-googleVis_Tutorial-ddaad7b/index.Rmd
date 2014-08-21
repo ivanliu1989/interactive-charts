@@ -1,8 +1,8 @@
 ---
-title       : Introduction to googleVis
-subtitle    : Lancaster University, 21 May 2013
-author      : Markus Gesmann
-job         : Maintainer of the googleVis and ChainLadder packages
+title       : googleVis Tutorial
+subtitle    : useR! Conference, Albacete, 9 July 2013
+author      : Markus Gesmann and Diego de Castillo
+job         : Authors of the googleVis package
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
@@ -10,16 +10,16 @@ widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 license     : by-nc-sa
 github      :
-  user      : mages
-  repo      : Introduction_to_googleVis
+  user      : decastillo
+  repo      : googleVis_Tutorial
 ---
 
 ## Disclaimer
 
-1. I am an autodidact 
-2. What I present here works for me
+1. We are autodidacts 
+2. What we present here works for us
 3. Read and follow the official [Google Chart API documentation](https://developers.google.com/chart/) and [Terms of Service](https://developers.google.com/readme/terms)
-4. Sometimes you have re-load this presentation for the charts and all slides to appear
+4. Sometimes you have to re-load this presentation for the charts and all slides to appear
 
 ---
 
@@ -30,10 +30,16 @@ github      :
 * R package googleVis
   * Concepts of googleVis
   * Case studies
+* googleVis on shiny  
 
 ```{r setOptions, echo=FALSE}
 options(gvis.plot.tag="chart")
 ```
+
+
+--- .segue .dark
+
+## Introduction and motivation
 
 --- .class #id 
 
@@ -55,20 +61,9 @@ options(gvis.plot.tag="chart")
 
 * Hence, we had to create an interface between the Google Chart Tools and R
 
---- 
+--- .segue .dark
 
-## Overview of googleVis
-
-* [googleVis](http://code.google.com/p/google-motion-charts-with-r/) is a package for [R](http://www.r-poject.org/) and provides an interface between R and the [Google Chart Tools](https://developers.google.com/chart/)
-
-* The functions of the package allow users to visualise data with the Google Chart Tools without uploading their data to Google
-
-* The output of googleVis functions is html code that contains the data and references to JavaScript functions hosted by Google
-
-* To view the output a browser with an internet connection is required, the actual chart is rendered in the browser; some charts require Flash
-
-* See also: **Using the Google Visualisation API with R**, 
-  [The R Journal, 3(2):40-44, December 2011](http://journal.r-project.org/archive/2011-2/RJournal_2011-2_Gesmann+de~Castillo.pdf) and googleVis [package vignette](http://cran.r-project.org/web/packages/googleVis/vignettes/googleVis.pdf)
+## Google Chart Tools
 
 ---
 
@@ -93,7 +88,7 @@ options(gvis.plot.tag="chart")
 The chart code has five generic parts:
 
 1. References to Google’s AJAX and Visualisation API
-2. Data to visualise as a DataTable
+2. Data to visualize as a DataTable
 3. Instance call to create the chart
 4. Method call to draw the chart including options
 5. HTML &lt;div&gt; element to add the chart to the page
@@ -112,15 +107,34 @@ The chart code has five generic parts:
 ## Motion chart example
 
 ```{r motionchartcode, results='asis'}
-library(googleVis)
+suppressPackageStartupMessages(library(googleVis))
 plot(gvisMotionChart(Fruits, "Fruit", "Year",
                      options=list(width=600, height=400)))
 ```
 
+
+--- .segue .dark
+
+## R package googleVis 
+
+--- 
+
+## Overview of googleVis
+
+* [googleVis](http://code.google.com/p/google-motion-charts-with-r/) is a package for [R](http://www.r-poject.org/) and provides an interface between R and the [Google Chart Tools](https://developers.google.com/chart/)
+
+* The functions of the package allow users to visualize data with the Google Chart Tools without uploading their data to Google
+
+* The output of googleVis functions is html code that contains the data and references to JavaScript functions hosted by Google
+
+* To view the output a browser with an internet connection is required, the actual chart is rendered in the browser; some charts require Flash
+
+* See also: **Using the Google Visualisation API with R**, 
+  [The R Journal, 3(2):40-44, December 2011](http://journal.r-project.org/archive/2011-2/RJournal_2011-2_Gesmann+de~Castillo.pdf) and googleVis [package vignette](http://cran.r-project.org/web/packages/googleVis/vignettes/googleVis.pdf)
+
 ---
 
-
-## googleVis version 0.4.2 provides interfaces to 
+## googleVis version 0.4.3 provides interfaces to 
 
 * Flash based
   * Motion Charts
@@ -252,7 +266,8 @@ levels(x$Ranking) <- nlevels(x$Rating):1
 x$Ranking <- as.character(x$Ranking)
 x$Rating <- paste(x$Country, x$Rating, sep=": ")
 G <- gvisGeoChart(x, "Country", "Ranking", hovervar="Rating",
-                options=list(gvis.editor="S&P", 
+                options=list(gvis.editor="S&P",
+                             projection="kavrayskiy-vii",
                              colorAxis="{colors:['#91BFDB', '#FC8D59']}"))
 ```
 
@@ -414,7 +429,485 @@ Your browser does not support iframe
 
 * See the example in `?plot.gvis` for more details
 
+--- .segue .dark
+
+## googleVis on shiny
+
 ---
+## Introduction to shiny
+
+* R Package shiny from RStudio supplies:
+  * interactive web application  / dynamic HTML-Pages with plain R
+  * GUI for own needs
+  * Website as server
+
+---
+
+## What makes shiny special ?
+
+* very simple: ready to use components (widgets)
+* event-driven (reactive programming): input <-> output
+* communication bidirectional with web sockets (HTTP)
+* JavaScript with JQuery (HTML) 
+* CSS with bootstrap
+
+---
+
+## Getting started: Setup
+
+1. ```R> install.packages("shiny")``` from CRAN
+2. Create directory ```HelloShiny``` 
+3. Edit ```global.r```
+4. Edit ```ui.r```
+5. Edit ```server.r```
+6. ```R> shiny::runApp("HelloShiny")```
+
+---
+
+## Getting started: global.R
+
+This file contains global variables, libraries etc.  [optional]
+
+```{r global, eval=FALSE}
+## E.g.
+library(googleVis)
+library(Cairo)
+The_Answer <- 42
+```
+
+---
+
+## Getting started: server.R
+
+
+The Core Component with functionality for input and output as plots, 
+tables and plain text.
+
+```{r server, eval=FALSE, tidy=FALSE}
+shinyServer(function(input, output) {
+       output$distPlot <- renderPlot({
+         dist <- rnorm(input$obs)
+         hist(dist)
+         })
+})
+```
+
+---
+
+## Getting started: ui.R
+
+This file creates the structure of HTML
+
+```{r ui, eval=FALSE, tidy=FALSE}
+shinyUI(pageWithSidebar(
+   headerPanel("Example Hello Shiny"),
+   sidebarPanel(
+      sliderInput("obs",  "", 0, 1000, 500)
+   ),
+   mainPanel(
+      plotOutput("distPlot")
+   )
+))
+```
+
+---
+
+## Getting strated: runApp
+
+```R> shiny::runApp('HelloShiny')```
+
+<iframe src="http://glimmer.rstudio.com/mages/HelloShiny/" width="100%" 
+height="100%" frameborder="0">Loading</iframe>
+
+---
+
+## Details for ui.r / part 1
+
+Ready-to-Use widgets for input parameter:
+
+- selectInput
+- checkboxInput
+- numericInput
+- sliderInput
+- textInput
+- radioButtons
+
+---
+
+## Details for ui.r / part 2
+
+Elements for structural usage:
+
+- conditionalPanel
+- tabsetPanel + tabPanel
+- includeMarkdown
+
+---
+
+## Details for server.r
+
+output components:
+
+- renderPlot
+- renderPrint
+- renderGvis 
+- renderTable
+
+additional compontents:
+- downloadHandler
+- fileInput
+
+---
+
+## Example 1: Select data for a scatter chart
+
+<iframe src="http://glimmer.rstudio.com/mages/LancasterExample_1/" width="100%" 
+height="100%" frameborder="0">Loading</iframe>
+
+
+---
+
+## Example 1: server.R
+
+```{r exmpl1_server, eval=FALSE}
+# Contributed by Joe Cheng, February 2013  
+# Requires googleVis version 0.4 and shiny 0.4 or greater
+library(googleVis)
+
+shinyServer(function(input, output) {
+  datasetInput <- reactive({
+    switch(input$dataset,
+           "rock" = rock,
+           "pressure" = pressure,
+           "cars" = cars)
+  })  
+  output$view <- renderGvis({ # instead of renderPlot
+    gvisScatterChart(datasetInput(), options=list(width=400, height=400))
+  })
+})
+```
+
+
+---
+
+## Example 1: ui.R
+
+```{r exmpl1_ui, eval=FALSE, tidy=FALSE}
+shinyUI(pageWithSidebar(
+  headerPanel("Example 1: scatter chart"),
+  sidebarPanel(
+    selectInput("dataset", "Choose a dataset:", 
+                choices = c("rock", "pressure", "cars"))
+  ),
+  mainPanel(
+    htmlOutput("view") ## not plotOut!
+  )
+))
+```
+
+---
+
+
+## Example 2: Interactive table
+
+<iframe src="http://glimmer.rstudio.com/mages/LancasterExample_2/" width="100%" 
+height="100%" frameborder="0">Loading</iframe>
+
+---
+
+## Example 2: server.R
+```{r exmpl2_server, eval=FALSE, tidy=FALSE}
+# Diego de Castillo, February 2013
+library(datasets)
+library(googleVis)
+shinyServer(function(input, output) {
+  myOptions <- reactive({
+    list(
+      page=ifelse(input$pageable==TRUE,'enable','disable'),
+      pageSize=input$pagesize,
+      height=400
+    )
+  })
+  output$myTable <- renderGvis({
+    gvisTable(Population[,1:5],options=myOptions())         
+  })
+})
+```
+
+---
+
+## Example 2: ui.R
+
+```{r exmpl2_ui, eval=FALSE, tidy=FALSE}
+shinyUI(pageWithSidebar(
+  headerPanel("Example 2: pageable table"),
+  sidebarPanel(
+    checkboxInput(inputId = "pageable", label = "Pageable"),
+    conditionalPanel("input.pageable==true",
+                     numericInput(inputId = "pagesize",
+                                  label = "Countries per page",10))    
+  ),
+  mainPanel(
+    htmlOutput("myTable")
+  )
+))
+```
+
+---
+
+## Example 3: Animated geo chart
+
+<iframe src="http://glimmer.rstudio.com/mages/LancasterExample_3/" width="100%" 
+height="100%" frameborder="0">Loading</iframe>
+
+---
+
+## Example 3: global.R
+
+```{r exmpl3_loaddata, eval=FALSE, tidy=FALSE}
+## Markus Gesmann, February 2013
+## Prepare data to be displayed
+## Load presidential election data by state from 1932 - 2012
+dat <- read.csv("http://dl.dropboxusercontent.com/u/7586336/blogger/US%20Presidential%20Elections.csv", 
+                stringsAsFactors=TRUE)
+
+
+## Add min and max values to the data
+datminmax = data.frame(state=rep(c("Min", "Max"),21), 
+                       demVote=rep(c(0, 100),21),
+                       year=sort(rep(seq(1932,2012,4),2)))
+dat <- rbind(dat[,1:3], datminmax)
+require(googleVis)
+```
+
+---
+
+## Example 3: server.R
+```{r exmpl3_server, eval=FALSE, tidy=FALSE}
+shinyServer(function(input, output) {
+  myYear <- reactive({
+    input$Year
+  })
+  output$year <- renderText({
+    paste("Democratic share of the presidential vote in", myYear())
+  })
+  output$gvis <- renderGvis({
+    myData <- subset(dat, (year > (myYear()-1)) & (year < (myYear()+1)))
+    gvisGeoChart(myData,
+                 locationvar="state", colorvar="demVote",
+                 options=list(region="US", displayMode="regions", 
+                              resolution="provinces",
+                              width=400, height=380,
+                              colorAxis="{colors:['#FFFFFF', '#0000FF']}"
+                 ))     
+    })
+})
+```
+
+---
+
+## Example 3: ui.R
+
+```{r exmpl3_ui, eval=FALSE, tidy=FALSE}
+shinyUI(pageWithSidebar(
+  headerPanel("Example 3: animated geo chart"),
+  sidebarPanel(
+    sliderInput("Year", "Election year to be displayed:", 
+                min=1932, max=2012, value=2012,  step=4,
+                format="###0",animate=TRUE)
+  ),
+  mainPanel(
+    h3(textOutput("year")), 
+    htmlOutput("gvis")
+  )
+))
+```
+
+---
+
+## Example 4: googleVis with interaction
+
+<iframe src="http://glimmer.rstudio.com/mages/Interaction/" width="100%" 
+height="100%" frameborder="0">Loading</iframe>
+
+
+---
+
+## Example 4: server.R / part 1
+
+```{r exmpl4_server1, eval=FALSE, tidy=FALSE}
+require(googleVis)
+shinyServer(function(input, output) {
+  datasetInput <- reactive({
+    switch(input$dataset, "pressure" = pressure, "cars" = cars)
+  })
+  output$view <- renderGvis({    
+    jscode <- "var sel = chart.getSelection();
+    var row = sel[0].row;
+    var text = data.getValue(row, 1);               
+    $('input#selected').val(text);
+    $('input#selected').trigger('change');"    
+    gvisScatterChart(data.frame(datasetInput()),
+                     options=list(gvis.listener.jscode=jscode,
+                                  height=200, width=300))
+    
+  })
+```
+
+---
+
+## Example 4: server.R / part 2
+
+```{r exmpl4_server2, eval=FALSE, tidy=FALSE}
+  output$distPlot <- renderPlot({
+    if (is.null(input$selected))
+      return(NULL)
+    
+    dist <- rnorm(input$selected)
+    hist(dist,main=input$selected)
+  })
+  
+  output$selectedOut <- renderUI({
+    textInput("selected", "", value="10")
+  })
+  outputOptions(output, "selectedOut", suspendWhenHidden=FALSE)   
+})
+```
+
+---
+
+## Example 4: ui.R
+
+```{r exmpl4_ui, eval=FALSE, tidy=FALSE}
+require(googleVis)
+shinyUI(pageWithSidebar(
+  headerPanel("", windowTitle="Example googleVis with interaction"),
+  sidebarPanel(
+    tags$head(tags$style(type='text/css', "#selected{ display: none; }")),
+    selectInput("dataset", "Choose a dataset:", 
+                choices = c("pressure", "cars")),
+    uiOutput("selectedOut")
+  ),
+  mainPanel(
+    tabsetPanel(
+      tabPanel("Main",
+               htmlOutput("view"),
+               plotOutput("distPlot", width="300px", height="200px")),
+      tabPanel("About", includeMarkdown('README.md')
+      ))))
+)
+```
+
+--- 
+
+## Reactive model
+
+Three objects build the framework:
+
+* reactive source     [selectInput] 
+  <img src="assets/img/source.png" alt="source" style="vertical-align:middle;">
+
+* reactive conductor  [db-connect / calculate]
+  <img src="assets/img/conductor.png" alt="conductor" style="vertical-align:middle;">
+
+* reactive endpoint    [renderPlot/renderTable]
+  <img src="assets/img/endpoint.png" alt="endpoint" style="vertical-align:middle;">
+
+---
+
+## Reactive model
+
+![](assets/img/reactivemodel_1.png)
+
+---
+
+## Reactive model
+
+![](assets/img/reactivemodel_2.png)
+
+---
+
+## Reactive model
+
+![](assets/img/reactivemodel_3.png)
+
+---
+
+## Reactive model
+
+![](assets/img/reactivemodel_4.png)
+
+---
+
+## Reactive model
+
+![](assets/img/reactivemodel_5.png)
+
+---
+
+## Reactive model
+
+![](assets/img/reactivemodel_6.png)
+
+---
+
+## Reactive model
+
+![](assets/img/reactivemodel_7.png)
+
+---
+
+## Reactive model
+
+![](assets/img/reactivemodel_8.png)
+
+---
+
+## Reactive model
+
+![](assets/img/reactivemodel_9.png)
+
+---
+
+## Reactive model
+
+![](assets/img/reactivemodel_10.png)
+
+---
+
+## Reactive model
+
+![](assets/img/reactivemodel_11.png)
+
+---
+
+## Further reading and examples
+
+* [Shiny by RStudio](http://www.rstudio.com/shiny/)
+* [First steps with googleVis on shiny](http://lamages.blogspot.co.uk/2013/02/first-steps-of-using-googlevis-on-shiny.html)
+* [RStudio Glimmer Server](http://glimmer.rstudio.com:8787)
+* [BI Dashbord with shiny and rCharts](http://glimmer.rstudio.com/reinholdsson/shiny-dashboard/)
+* [Shiny examples with slidify](https://github.com/ramnathv/shinyExamples)
+* [Shiny on R-Bloggers](http://www.r-bloggers.com/?s=shiny)
+
+
+--- .segue .dark
+
+## The End. Questions? 
+
+----
+
+## How we created these slides
+
+```{r slidify, eval=FALSE}
+library(slidify)
+author("googleVis_Tutorial")
+## Edit the file index.Rmd file and then
+slidify("index.Rmd")
+```
+
+---
+
 
 ## Blog articles with googleVis tips
 
@@ -429,44 +922,14 @@ Your browser does not support iframe
 
 ## Other R packages
 
-*  [R animation package allows to create SWF, GIF and MPEG directly](http://animation.yihui.name/)
-*  [iplots: iPlots - interactive graphics for R](http://cran.r-project.org/web/packages/iplots/)
-*  [Acinonyx aka iPlots eXtreme](http://rforge.net/Acinonyx/index.html)
-*  [gridSVG: Export grid graphics as SVG](http://cran.r-project.org/web/packages/gridSVG/index.html)
-*  [plotGoogleMaps: Plot HTML output with Google Maps API and your own data](http://cran.r-project.org/web/packages/plotGoogleMaps/)
-*  [RgoogleMaps: Overlays on Google map tiles in R](http://cran.r-project.org/web/packages/RgoogleMaps/index.html)
+* [R animation package allows to create SWF, GIF and MPEG directly](http://animation.yihui.name/)
+* [iplots: iPlots - interactive graphics for R](http://cran.r-project.org/web/packages/iplots/)
+* [Acinonyx aka iPlots eXtreme](http://rforge.net/Acinonyx/index.html)
+* [gridSVG: Export grid graphics as SVG](http://cran.r-project.org/web/packages/gridSVG/index.html)
+* [plotGoogleMaps: Plot HTML output with Google Maps API and your own data](http://cran.r-project.org/web/packages/plotGoogleMaps/)
+* [RgoogleMaps: Overlays on Google map tiles in R](http://cran.r-project.org/web/packages/RgoogleMaps/index.html)
 * [rCharts](http://ramnathv.github.io/rCharts/)
 * [clickme](https://github.com/nachocab/clickme)
-
---- 
-
-## How I created these slides
-
-```{r slidify, eval=FALSE}
-library(slidify)
-setwd("~/Dropbox/Lancaster/")
-author("Introduction_to_googleVis")
-## Edit the file index.Rmd file and then
-slidify("index.Rmd")
-```
-
----
-
-## The End. So what ...? 
-
-* googleVis brings interactive plots to R
-
-* Use them to engage with other
-
-* No more boring data
-
-----
-
-## Contact
-
-* Markus Gesmann
-* [markus.gesmann gmail.com](mailto:markus.gesmann@gmail.com)
-* My blog: [http://lamages.blogspot.com](http://lamages.blogspot.com)
 
 ---
 
@@ -541,10 +1004,11 @@ slidify("index.Rmd")
     WorldBank demo using the WDI package.
 * John Muschelli for suggesting to add 'hovervar' as an additional
     argument to gvisGeoChart.
+* [Ramnath Vaidyanathan](https://github.com/ramnathv) for slidify.
 
 ---
 ## Session Info
 
-```{r sessionInfo}
+```{r sessionInfo2}
 sessionInfo()
 ```
