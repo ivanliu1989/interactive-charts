@@ -36,7 +36,15 @@
     <h2>Interactive charts</h2>
     <p>Ivan Liu<br/></p>
   </hgroup>
+    <a href="https://github.com/ivanliu1989/interactive_charts/zipball/gh-pages" class="example">
+     Download
+    </a>
   <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-nc-sa/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png'>
+    </a>
+  </footer>
 </slide>
     
 
@@ -47,9 +55,7 @@
   </hgroup>
   <article data-timings="">
     <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
+<li>Read and follow the official <a href="https://developers.google.com/chart/">Google Chart API documentation</a> and <a href="https://developers.google.com/readme/terms">Terms of Service</a></li>
 </ol>
 
   </article>
@@ -57,6 +63,17 @@
 </slide>
 
 <slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>A online video</h2>
+  </hgroup>
+  <article data-timings="">
+    <iframe width="420" height="315" src="http://www.youtube.com/embed/hVimVzgtD6w" frameborder="0" allowfullscreen></iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
   <hgroup>
     <h2>A simple table</h2>
   </hgroup>
@@ -79,22 +96,19 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-3" style="background:;">
+<slide class="" id="slide-4" style="background:;">
   <hgroup>
-    <h2>A simple plot</h2>
+    <h2>A simple line plot</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">require(ggplot2)
-qplot(wt,mpg,data=mtcars)
+    <pre><code>## starting httpd help server ... done
 </code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-2.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-4" style="background:;">
+<slide class="" id="slide-5" style="background:;">
   <hgroup>
     <h2>Interactive plot 1</h2>
   </hgroup>
@@ -105,218 +119,12 @@ qplot(wt,mpg,data=mtcars)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-5" style="background:;">
+<slide class="" id="slide-6" style="background:;">
   <hgroup>
     <h2>Interactive plot 2</h2>
   </hgroup>
   <article data-timings="">
-    <p>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
-  &quot;<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd%22%3E">http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</a>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>MotionChartIDe2443ca3d08</title>
-<meta http-equiv="content-type" content="text/html;charset=utf-8" /></p>
-
-<style type="text/css">
-body {
-  color: #444444;
-  font-family: Arial,Helvetica,sans-serif;
-  font-size: 75%;
-  }
-  a {
-  color: #4D87C7;
-  text-decoration: none;
-}
-</style>
-
-<p></head>
-<body>
- &lt;!-- MotionChart generated in R 3.1.1 by googleVis 0.5.5 package --&gt;</p>
-
-<!-- Thu Aug 21 12:57:33 2014 -->
-
-<!-- jsHeader -->
-
-<script type="text/javascript">
- 
-// jsData 
-function gvisDataMotionChartIDe2443ca3d08 () {
-var data = new google.visualization.DataTable();
-var datajson =
-[
- [
- "Apples",
-2008,
-"West",
-98,
-78,
-20,
-"2008-12-31" 
-],
-[
- "Apples",
-2009,
-"West",
-111,
-79,
-32,
-"2009-12-31" 
-],
-[
- "Apples",
-2010,
-"West",
-89,
-76,
-13,
-"2010-12-31" 
-],
-[
- "Oranges",
-2008,
-"East",
-96,
-81,
-15,
-"2008-12-31" 
-],
-[
- "Bananas",
-2008,
-"East",
-85,
-76,
-9,
-"2008-12-31" 
-],
-[
- "Oranges",
-2009,
-"East",
-93,
-80,
-13,
-"2009-12-31" 
-],
-[
- "Bananas",
-2009,
-"East",
-94,
-78,
-16,
-"2009-12-31" 
-],
-[
- "Oranges",
-2010,
-"East",
-98,
-91,
-7,
-"2010-12-31" 
-],
-[
- "Bananas",
-2010,
-"East",
-81,
-71,
-10,
-"2010-12-31" 
-] 
-];
-data.addColumn('string','Fruit');
-data.addColumn('number','Year');
-data.addColumn('string','Location');
-data.addColumn('number','Sales');
-data.addColumn('number','Expenses');
-data.addColumn('number','Profit');
-data.addColumn('string','Date');
-data.addRows(datajson);
-return(data);
-}
- 
-// jsDrawChart
-function drawChartMotionChartIDe2443ca3d08() {
-var data = gvisDataMotionChartIDe2443ca3d08();
-var options = {};
-options["width"] =    600;
-options["height"] =    400;
-
-    var chart = new google.visualization.MotionChart(
-    document.getElementById('MotionChartIDe2443ca3d08')
-    );
-    chart.draw(data,options);
     
-
-}
-  
- 
-// jsDisplayChart
-(function() {
-var pkgs = window.__gvisPackages = window.__gvisPackages || [];
-var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
-var chartid = "motionchart";
-  
-// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
-var i, newPackage = true;
-for (i = 0; newPackage && i < pkgs.length; i++) {
-if (pkgs[i] === chartid)
-newPackage = false;
-}
-if (newPackage)
-  pkgs.push(chartid);
-  
-// Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartMotionChartIDe2443ca3d08);
-})();
-function displayChartMotionChartIDe2443ca3d08() {
-  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
-  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
-  window.clearTimeout(window.__gvisLoad);
-  // The timeout is set to 100 because otherwise the container div we are
-  // targeting might not be part of the document yet
-  window.__gvisLoad = setTimeout(function() {
-  var pkgCount = pkgs.length;
-  google.load("visualization", "1", { packages:pkgs, callback: function() {
-  if (pkgCount != pkgs.length) {
-  // Race condition where another setTimeout call snuck in after us; if
-  // that call added a package, we must not shift its callback
-  return;
-}
-while (callbacks.length > 0)
-callbacks.shift()();
-} });
-}, 100);
-}
- 
-// jsFooter
-</script>
- 
-
-<!-- jsChart -->  
-
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartIDe2443ca3d08"></script>
- 
-
-<!-- divChart -->
-
-<div id="MotionChartIDe2443ca3d08" 
-  style="width: 600; height: 400;">
-</div>
-
-<p><div><span>Data: Fruits &#8226; Chart ID: <a href="Chart_MotionChartIDe2443ca3d08.html">MotionChartIDe2443ca3d08</a> &#8226; <a href="https://github.com/mages/googleVis">googleVis-0.5.5</a></span><br /> </p>
-
-<!-- htmlFooter -->
-
-<p><span> 
-  R version 3.1.1 (2014-07-10) 
-  &#8226; <a href="https://developers.google.com/terms/">Google Terms of Use</a> &#8226; <a href="https://google-developers.appspot.com/chart/interactive/docs/gallery/motionchart">Documentation and Data Policy</a>
-</span></div>
-</body>
-</html></p>
-
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -333,26 +141,32 @@ callbacks.shift()();
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='A simple table'>
+        data-slide=2 title='A online video'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='A simple plot'>
+        data-slide=3 title='A simple table'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Interactive plot 1'>
+        data-slide=4 title='A simple line plot'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Interactive plot 2'>
+        data-slide=5 title='Interactive plot 1'>
          5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Interactive plot 2'>
+         6
       </a>
     </li>
   </ul>
