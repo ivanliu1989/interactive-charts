@@ -3,5 +3,6 @@ ggplot2
 googleVis
 knitr
 rCharts
+reshape2
 RJSONIO
 xtable
